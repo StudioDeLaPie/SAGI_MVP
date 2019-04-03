@@ -5,20 +5,23 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     private ParticleSystem ps;
+    public Teleporter teleporter;
 
     // Start is called before the first frame update
     void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        ps.Stop();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision" + other.name);
+        //Debug.Log("Collision" + other.name);
         if (other.GetComponentInParent<Cube>() != null)
         {
-            Debug.Log("Activé");
+            //Debug.Log("Activé");
             ps.Play();
+            teleporter.TargetActive();
         }
     }
 
@@ -26,8 +29,9 @@ public class Target : MonoBehaviour
     {
         if (other.GetComponentInParent<Cube>() != null)
         {
-            Debug.Log("Désactivé");
+            //Debug.Log("Désactivé");
             ps.Stop();
+            teleporter.TargetDesactive();
         }
     }
 }
