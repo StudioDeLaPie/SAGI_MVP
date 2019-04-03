@@ -9,6 +9,9 @@ public class Charges : MonoBehaviour
     [SerializeField] private int poidsSansCharges = 2;
     [SerializeField] private int maxCharges = 4;
 
+    /// <summary>
+    /// Nombre de charges négatives.
+    /// </summary>
     public int CurrentCharge
     {
         get { return chargesNegatives; }
@@ -19,6 +22,9 @@ public class Charges : MonoBehaviour
         get { return maxCharges; }
     }
 
+    /// <summary>
+    /// Poids actuel. (Poids sans charges - nbCharges)
+    /// </summary>
     public int CurrentPoids
     {
         get { return poidsSansCharges - chargesNegatives; }

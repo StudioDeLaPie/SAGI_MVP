@@ -5,9 +5,11 @@ using UnityEngine;
 public class Gravity : MonoBehaviour
 {
     public bool isPlayer = false;
+    public float maxVelocityWeight1;
+    public float maxVelocityWeight2;
 
     private Charges charge;
-    [SerializeField] private float weightMultiplier = 200;
+    [SerializeField] private float gravityStrenght;
 
     private Rigidbody rb;
 
@@ -22,8 +24,19 @@ public class Gravity : MonoBehaviour
     private void FixedUpdate()
     {
         if (isPlayer)
-            rb.AddForce(0, -weightMultiplier, 0);
-        else
-            rb.AddForce(0, -(charge.CurrentPoids * weightMultiplier), 0);
+            rb.AddForce(0, -gravityStrenght, 0);
+        else if (charge.CurrentPoids != 0)
+        {
+            //Debug.Log(rb.velocity.y);
+            rb.AddForce(0, -(gravityStrenght * Mathf.Sign(charge.CurrentPoids)), 0);
+            if (Mathf.Abs(charge.CurrentPoids) == 1 && Mathf.Abs(rb.velocity.y) > maxVelocityWeight1)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, -(maxVelocityWeight1 * charge.CurrentPoids), rb.velocity.z);
+            }
+            if (Mathf.Abs(charge.CurrentPoids) == 2 && Mathf.Abs(rb.velocity.y) > maxVelocityWeight2)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, -(maxVelocityWeight2 * charge.CurrentPoids), rb.velocity.z);
+            }
+        }
     }
 }

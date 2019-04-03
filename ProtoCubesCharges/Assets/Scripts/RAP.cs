@@ -22,6 +22,7 @@ public class RAP : MonoBehaviour
     {
         transformRAP = goRAP.GetComponent<Transform>();
         jointRAP = goRAP.GetComponent<ConfigurableJoint>();
+        goRAP.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class RAP : MonoBehaviour
                 Attache();
             }
         }
+       
         if (Input.mouseScrollDelta.y != 0 && active)
         {
             float newDistance = jointRAP.anchor.z + Input.mouseScrollDelta.y * scrollSpeed;

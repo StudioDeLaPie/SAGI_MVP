@@ -260,7 +260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  weightMultiplier: 200
+  maxVelocityWeight1: 1
+  maxVelocityWeight2: 5
+  gravityStrenght: 200
 --- !u!114 &5631224695609914296
 MonoBehaviour:
   m_ObjectHideFlags: 0
