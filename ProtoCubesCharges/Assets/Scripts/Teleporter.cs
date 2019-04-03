@@ -24,8 +24,10 @@ public class Teleporter : MonoBehaviour
         }
         nbTargetTotal = targets.Count;
         nbTargetActivated = 0;
+
         teleporterZone = GetComponent<Collider>();
         teleporterZone.enabled = false;
+
         particulesSystem = GetComponent<ParticleSystem>();
         particulesSystem.Stop();
     }

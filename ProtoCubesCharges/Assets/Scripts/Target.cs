@@ -5,7 +5,7 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     private ParticleSystem ps;
-    public Teleporter teleporter;
+    [HideInInspector] public Teleporter teleporter;
 
     // Start is called before the first frame update
     void Start()
