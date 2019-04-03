@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class RAP : MonoBehaviour
 {
@@ -9,8 +10,6 @@ public class RAP : MonoBehaviour
     [Range(0.51f, 10)] public float minRange = 3.0f;
     public float maxRange = 6.0f;
     public float scrollSpeed = 0.1f;
-
-    private const float ROOT3 = ;
 
     private Transform transformRAP;
     private ConfigurableJoint jointRAP;
@@ -44,7 +43,6 @@ public class RAP : MonoBehaviour
             float newDistance = jointRAP.anchor.z + Input.mouseScrollDelta.y * scrollSpeed;
             newDistance = Mathf.Clamp(newDistance, minRangeFromTouchedObject, maxRange);
             jointRAP.anchor = new Vector3(0, 0, newDistance);
-            Debug.Log(Input.mouseScrollDelta.y);
         }
     }
 
@@ -56,7 +54,7 @@ public class RAP : MonoBehaviour
             jointRAP.connectedBody = touchedObject;
 
             //Définition de la distance de l'ancre
-            minRangeFromTouchedObject = minRange + (touchedObject.transform.localScale.x * ROOT3) / 2;
+            minRangeFromTouchedObject = minRange + (touchedObject.transform.localScale.x * CONST.ROOT3) / 2;
             jointRAP.anchor = new Vector3(0, 0, (minRangeFromTouchedObject + maxRange) / 2.0f);
 
             touchedObject.GetComponent<Gravity>().enabled = false;
