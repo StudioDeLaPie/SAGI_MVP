@@ -13,7 +13,7 @@ public class Teleporter : MonoBehaviour
 
     public void Teleport()
     {
-        Debug.Log("Niveau Terminer");
+        Debug.Log("Niveau Terminé");
     }
 
     void Start()

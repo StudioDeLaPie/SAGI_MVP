@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6603604904544346324}
   - component: {fileID: 5631224695609914296}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: CubeGravitron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
