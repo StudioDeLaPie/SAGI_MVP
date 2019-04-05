@@ -48,12 +48,13 @@ public class RAP : MonoBehaviour
                 Attache();
             }
         }
-       
+
         if (Input.mouseScrollDelta.y != 0 && active)
         {
             float newDistance = jointRAP.anchor.z + Input.mouseScrollDelta.y * scrollSpeed;
             newDistance = Mathf.Clamp(newDistance, minRangeFromTouchedObject, maxRange);
             jointRAP.anchor = new Vector3(0, 0, newDistance);
+            touchedObject.AddForce(0.1f, 0.1f, 0.1f);//Wake up le cube pour que le joint s'actualise
         }
     }
 
@@ -65,19 +66,22 @@ public class RAP : MonoBehaviour
 
     private void Attache()
     {
-        if (CalculateRayCast() && touchedObject != null)
+        if (CalculateRayCast() && touchedObject != null) //Si on a touché un rigidbody
         {
-            goRAP.SetActive(true);
-            jointRAP.connectedBody = touchedObject;
+            if (touchedObject.GetComponent<Cube>() != null && !touchedObject.GetComponent<Cube>().Materialised) //s'il s'agit d'un cube non-matérialisé
+            {
+                goRAP.SetActive(true);
+                jointRAP.connectedBody = touchedObject;
 
-            //Définition de la distance de l'ancre
-            minRangeFromTouchedObject = minRange + (touchedObject.transform.localScale.x * CONST.ROOT3) / 2;
-            jointRAP.anchor = new Vector3(0, 0, (minRangeFromTouchedObject + maxRange) / 2.0f);
+                //Définition de la distance de l'ancre
+                minRangeFromTouchedObject = minRange + (touchedObject.transform.localScale.x * CONST.ROOT3) / 2;
+                jointRAP.anchor = new Vector3(0, 0, (minRangeFromTouchedObject + maxRange) / 2.0f);
 
-            touchedObject.GetComponent<Gravity>().enabled = false;
-            active = true;
-            feedbackRAP.Active(touchedObject.transform);
+                touchedObject.GetComponent<Gravity>().enabled = false;
+                active = true;
+                feedbackRAP.Active(touchedObject.transform);
 
+            }
         }
     }
 
