@@ -11,7 +11,10 @@ public class RAP : MonoBehaviour
     public float maxRange = 6.0f;
     public float scrollSpeed = 0.1f;
 
+    public float breakForce;
+
     private Transform transformRAP;
+    private FeedbackRAP feedbackRAP;
     private ConfigurableJoint jointRAP;
     private bool active;
     private Rigidbody touchedObject;
@@ -21,13 +24,19 @@ public class RAP : MonoBehaviour
     void Start()
     {
         transformRAP = goRAP.GetComponent<Transform>();
-        jointRAP = goRAP.GetComponent<ConfigurableJoint>();
+        //jointRAP = goRAP.GetComponent<ConfigurableJoint>();
+        InitJoint();
+        feedbackRAP = GetComponent<FeedbackRAP>();
         goRAP.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (active && jointRAP == null)
+        {
+            JointBreak();
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (active)
@@ -48,6 +57,12 @@ public class RAP : MonoBehaviour
         }
     }
 
+    private void JointBreak()
+    {
+        InitJoint();
+        Detache();
+    }
+
     private void Attache()
     {
         if (CalculateRayCast() && touchedObject != null)
@@ -61,6 +76,8 @@ public class RAP : MonoBehaviour
 
             touchedObject.GetComponent<Gravity>().enabled = false;
             active = true;
+            feedbackRAP.Active(touchedObject.transform);
+
         }
     }
 
@@ -71,6 +88,7 @@ public class RAP : MonoBehaviour
             touchedObject.GetComponent<Gravity>().enabled = true;
         goRAP.SetActive(false);
         active = false;
+        feedbackRAP.Desactive();
     }
 
     private bool CalculateRayCast()
@@ -79,5 +97,26 @@ public class RAP : MonoBehaviour
         if (result)
             touchedObject = hit.transform.GetComponent<Rigidbody>();
         return result;
+    }
+
+    private void InitJoint()
+    {
+        if (goRAP.GetComponent<ConfigurableJoint>() != null)
+            Destroy(goRAP.GetComponent<ConfigurableJoint>());
+
+        jointRAP = goRAP.AddComponent<ConfigurableJoint>();
+        jointRAP.anchor = Vector3.zero;
+        jointRAP.autoConfigureConnectedAnchor = false;
+        jointRAP.connectedAnchor = Vector3.zero;
+        jointRAP.xMotion = ConfigurableJointMotion.Locked;
+        jointRAP.yMotion = ConfigurableJointMotion.Locked;
+        jointRAP.zMotion = ConfigurableJointMotion.Locked;
+
+        SoftJointLimitSpring jointLimit = new SoftJointLimitSpring();
+        jointLimit.spring = 1;
+        jointRAP.linearLimitSpring = jointLimit;
+
+        jointRAP.enablePreprocessing = false;
+        jointRAP.breakForce = breakForce;
     }
 }

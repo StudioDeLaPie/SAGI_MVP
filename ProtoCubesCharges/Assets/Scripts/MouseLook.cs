@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [Serializable]
 public class MouseLook
@@ -25,18 +27,22 @@ public class MouseLook
 
     public void LookRotation(Transform character, Transform camera)
     {
-        float yRot = Input.GetAxis("Mouse X") * XSensitivity;
-        float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+        if (m_cursorIsLocked) //Tourne la caméra seulement si le cursor est lock
+        {
 
-        m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
-        m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+            float yRot = Input.GetAxis("Mouse X") * XSensitivity;
+            float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
 
-        if (clampVerticalRotation)
-            m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
+            m_CharacterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+            m_CameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
 
-        character.localRotation = m_CharacterTargetRot;
-        camera.localRotation = m_CameraTargetRot;
+            if (clampVerticalRotation)
+                m_CameraTargetRot = ClampRotationAroundXAxis(m_CameraTargetRot);
 
+            character.localRotation = m_CharacterTargetRot;
+            camera.localRotation = m_CameraTargetRot;
+
+        }
         UpdateCursorLock();
     }
 
@@ -50,9 +56,9 @@ public class MouseLook
         }
     }
 
-    public void UpdateCursorLock()
+    private void UpdateCursorLock()
     {
-        //if the user set "lockCursor" we check & properly lock the cursos
+        //if the user set "lockCursor" we check & properly lock the cursor
         if (lockCursor)
             InternalLockUpdate();
     }
@@ -63,7 +69,7 @@ public class MouseLook
         {
             m_cursorIsLocked = false;
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0) && !IsPointerOverUIObject())
         {
             m_cursorIsLocked = true;
         }
@@ -80,7 +86,17 @@ public class MouseLook
         }
     }
 
-    Quaternion ClampRotationAroundXAxis(Quaternion q)
+    //When Touching UI
+    private bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
+    private Quaternion ClampRotationAroundXAxis(Quaternion q)
     {
         q.x /= q.w;
         q.y /= q.w;

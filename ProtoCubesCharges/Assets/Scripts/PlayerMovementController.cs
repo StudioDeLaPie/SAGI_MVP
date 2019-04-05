@@ -11,7 +11,8 @@ public class PlayerMovementController : MonoBehaviour
         public float ForwardSpeed = 65;   // Speed when walking forward
         public float StrafeSpeed = 45;    // Speed when walking sideways or backwards
         public float JumpForce = 150;
-
+        public float groundCheckDistance;
+        public float shellOffset;
 
         [HideInInspector] public float CurrentTargetSpeed;
 
@@ -34,22 +35,86 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
+    [Serializable]
+    public class Audio
+    {
+        public AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+        public AudioClip m_JumpSound;           // the sound played when character leaves the ground.
+        public AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        public float m_StepInterval;
+
+        [HideInInspector] public AudioSource m_AudioSource;
+        private float m_NextStep, m_StepCycle;
+
+        public void Init()
+        {
+            m_NextStep = 0f;
+            m_StepCycle = 0f;
+        }
+
+        public void PlayLandingSound()
+        {
+            m_NextStep = m_StepCycle + .5f;
+            if (m_AudioSource.isPlaying)
+            {
+                return;
+            }
+            m_AudioSource.clip = m_LandSound;
+            m_AudioSource.Play();
+        }
+
+        public void PlayJumpSound()
+        {
+            m_AudioSource.PlayOneShot(m_JumpSound);
+        }
+
+        public void ProgressStepCycle(float speed, bool isGrounded)
+        {
+            m_StepCycle += Time.deltaTime;
+
+            if (!(m_StepCycle > m_NextStep) || speed == 0 || !isGrounded)
+            {
+                return;
+            }
+
+            m_NextStep = m_StepCycle + m_StepInterval;
+
+            PlayFootStepAudio();
+        }
+
+        private void PlayFootStepAudio()
+        {
+            // pick & play a random footstep sound from the array,
+            // excluding sound at index 0
+            int n = UnityEngine.Random.Range(1, m_FootstepSounds.Length);
+            m_AudioSource.clip = m_FootstepSounds[n];
+            m_AudioSource.PlayOneShot(m_AudioSource.clip);
+            // move picked sound to index 0 so it's not picked next time
+            m_FootstepSounds[n] = m_FootstepSounds[0];
+            m_FootstepSounds[0] = m_AudioSource.clip;
+        }
+    }
+
     public Camera cam;
     public LayerMask walkableLayers;
     public MovementSettings movementSettings = new MovementSettings();
     public MouseLook mouseLook = new MouseLook();
+    [SerializeField, Range(0f, 1f)] private float decelerationPercentage = 0.1f;
+    public Audio soundManager = new Audio();
+
 
     private Rigidbody m_RigidBody;
-    private bool m_Jump, m_Jumping, m_IsGrounded;
+    private bool m_Jump, m_Jumping, m_IsGrounded, m_PreviouslyGrounded;
     private CapsuleCollider m_Capsule;
 
-    [SerializeField, Range(0f, 1f)] private float decelerationPercentage = 0.1f;
 
 
     private void Start()
     {
         m_RigidBody = GetComponent<Rigidbody>();
         m_Capsule = GetComponent<CapsuleCollider>();
+        soundManager.m_AudioSource = GetComponent<AudioSource>();
+        soundManager.Init();
     }
 
     private void OnEnable()
@@ -90,16 +155,21 @@ public class PlayerMovementController : MonoBehaviour
             {
                 m_RigidBody.AddForce(desiredMove, ForceMode.Impulse);
             }
+
+            soundManager.ProgressStepCycle(desiredMove.magnitude, m_IsGrounded);
         }
+        if (!m_PreviouslyGrounded && m_IsGrounded)
+            soundManager.PlayLandingSound();
 
         if (m_IsGrounded && m_Jump)
         {
+            soundManager.PlayJumpSound();
             m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
             m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
         }
 
-        m_Jump = false;
         ApplyDeceleration(); //Application de la resistance au sol et a l'air
+        m_Jump = false;
     }
 
 
@@ -131,21 +201,16 @@ public class PlayerMovementController : MonoBehaviour
 
     private void ApplyDeceleration()
     {
-        if (m_IsGrounded)
-            m_RigidBody.velocity *= decelerationPercentage;
-        else
-        {
-            float yAxisVelocity = m_RigidBody.velocity.y;
-            m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x * decelerationPercentage, yAxisVelocity, m_RigidBody.velocity.z * decelerationPercentage);
-        }
-
+        float yAxisVelocity = m_RigidBody.velocity.y;
+        m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x * decelerationPercentage, yAxisVelocity, m_RigidBody.velocity.z * decelerationPercentage);
     }
 
     private void GroundCheck()
     {
+        m_PreviouslyGrounded = m_IsGrounded;
         RaycastHit hitInfo;
-        if (Physics.SphereCast(transform.position, m_Capsule.radius * (0.9f), Vector3.down, out hitInfo,
-                               ((m_Capsule.height / 2f) - m_Capsule.radius) + 0.2f, walkableLayers, QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - movementSettings.shellOffset), Vector3.down, out hitInfo,
+                               ((m_Capsule.height / 2f) - m_Capsule.radius) + movementSettings.groundCheckDistance, walkableLayers, QueryTriggerInteraction.Ignore))
         {
             m_IsGrounded = true;
         }

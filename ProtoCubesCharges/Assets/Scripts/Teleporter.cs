@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Teleporter : MonoBehaviour
 {
@@ -11,10 +12,6 @@ public class Teleporter : MonoBehaviour
 
     private Collider teleporterZone;
 
-    public void Teleport()
-    {
-        Debug.Log("Niveau Terminé");
-    }
 
     void Start()
     {
@@ -64,5 +61,12 @@ public class Teleporter : MonoBehaviour
         {
             Teleport();
         }
+    }
+
+    public void Teleport()
+    {
+        Debug.Log("Niveau Terminé");
+        int index = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(index + 1, LoadSceneMode.Single);
     }
 }
