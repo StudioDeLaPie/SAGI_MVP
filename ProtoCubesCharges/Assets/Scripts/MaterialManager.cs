@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class MaterialManager : MonoBehaviour
 {
+    public List<GameObject> feedBackPoids;
+    public List<GameObject> feedBackCharges;
+
+    [SerializeField] private new MeshRenderer renderer;
+
+    private Light light;
     private Dictionary<int, Material> materials;
     private string pathMaterials = "Materials/Cubes/";
     private Charges charges;
     private int materialIndex;
-    [SerializeField] private new MeshRenderer renderer;
     private new Rigidbody rigidbody;
-    public List<GameObject> feedBackPoids;
-    public List<GameObject> feedBackCharges;
 
 
     private void Start()
@@ -20,6 +23,7 @@ public class MaterialManager : MonoBehaviour
         Initialisation();
         charges = GetComponent<Charges>();
         rigidbody = GetComponent<Rigidbody>();
+        light = GetComponentInChildren<Light>();
         UpdateMaterial();
         ChangeMaterial();
     }
@@ -55,6 +59,8 @@ public class MaterialManager : MonoBehaviour
             go.SetActive(false);
         }
         feedBackCharges[charges.CurrentCharge].SetActive(true);
+
+        light.color = materials[materialIndex].color;
     }
 
     public void UpdateMaterial()
