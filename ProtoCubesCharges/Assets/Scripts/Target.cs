@@ -10,7 +10,7 @@ public class Target : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ps = GetComponent<ParticleSystem>();
+        ps = GetComponentInChildren<ParticleSystem>();
         ps.Stop();
     }
 
@@ -20,6 +20,7 @@ public class Target : MonoBehaviour
         if (other.GetComponentInParent<Cube>() != null)
         {
             //Debug.Log("Activé");
+            ps.gameObject.SetActive(true);
             ps.Play();
             teleporter.TargetActive();
         }
@@ -30,6 +31,7 @@ public class Target : MonoBehaviour
         if (other.GetComponentInParent<Cube>() != null)
         {
             //Debug.Log("Désactivé");
+            ps.gameObject.SetActive(false);
             ps.Stop();
             teleporter.TargetDesactive();
         }
