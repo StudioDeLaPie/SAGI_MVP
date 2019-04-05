@@ -34,6 +34,11 @@ public class Cube : MonoBehaviour
         }
     }
 
+    public bool Materialised
+    {
+        get { return materialised; }
+    }
+
 
     // Start is called before the first frame update
     void Start()
