@@ -11,6 +11,18 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
+    public void PreviousLevel()
+    {
+        Debug.Log("Previous level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1, LoadSceneMode.Single);
+    }
+
+    public void NextLevel()
+    {
+        Debug.Log("Next level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+    }
+
     public void GoBackToMenu()
     {
         Debug.Log("go back menu");
