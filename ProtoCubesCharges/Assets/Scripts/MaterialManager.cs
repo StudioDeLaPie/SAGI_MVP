@@ -19,13 +19,14 @@ public class MaterialManager : MonoBehaviour
 
 
     private void Start()
-    {
+    {        
         Initialisation();
         charges = GetComponent<Charges>();
         rigidbody = GetComponent<Rigidbody>();
         light = GetComponentInChildren<Light>();
         UpdateMaterial();
         ChangeMaterial();
+        UpdateFeedback();
     }
 
     private void Initialisation()
