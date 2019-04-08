@@ -42,18 +42,33 @@ public class MaterialManager : MonoBehaviour
     private void Update()
     {
         UpdateMaterial();
-        UpdateFeedback();
         ChangeMaterial();
     }
 
-    private void UpdateFeedback()
+    public void UpdateFeedback()
     {
-        foreach(GameObject go in feedBackPoids)
+        foreach (GameObject go in feedBackPoids)
         {
             go.SetActive(false);
         }
-        feedBackPoids[charges.CurrentPoids + 2].SetActive(true);
 
+        if (Math.Abs(charges.CurrentPoids) == 0)
+        {
+            feedBackPoids[0].SetActive(true);
+        }
+        else
+        {
+            int index = Mathf.Abs(charges.CurrentPoids);
+            feedBackPoids[index].SetActive(true);
+
+            float orientation = 90;
+            if (charges.CurrentPoids < 0)
+                orientation *= -1;
+
+            feedBackPoids[index].transform.rotation = Quaternion.identity;
+            feedBackPoids[index].transform.Rotate(0, 0, orientation);
+        }
+        
         foreach (GameObject go in feedBackCharges)
         {
             go.SetActive(false);

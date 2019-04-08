@@ -11,6 +11,7 @@ public class Cube : MonoBehaviour
     private bool materialised;
     private AimCamera feedbacks;
     private Rigidbody rb;
+    private MaterialManager materialManager;
 
     public int NbCharges
     {
@@ -49,16 +50,19 @@ public class Cube : MonoBehaviour
         go_materialise.SetActive(false);
         feedbacks = GetComponentInChildren<AimCamera>();
         feedbacks.Materialise = false;
+        materialManager = GetComponent<MaterialManager>();
     }
 
     public void Alourdir()
     {
         charges.RetraitChargeNegative();
+        materialManager.UpdateFeedback();
     }
 
     public void Alleger()
     {
         charges.AjoutChargeNegative();
+        materialManager.UpdateFeedback();
     }
 
     public void SwitchMaterialisation()
