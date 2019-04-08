@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    private Teleporter teleporter;
     private ParticleSystem ps;
-    [HideInInspector] public Teleporter teleporter;
+    private bool activated = false;
+
+    public void SetTeleporter(Teleporter t) { teleporter = t; }
+    public bool IsActivated { get { return activated; } }
 
     // Start is called before the first frame update
     void Start()
     {
         ps = GetComponentInChildren<ParticleSystem>();
+        ps.gameObject.SetActive(true);
         ps.Stop();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         //Debug.Log("Collision" + other.name);
-        if (other.GetComponentInParent<Cube>() != null)
+        if (other.GetComponentInParent<Cube>() != null && !activated)
         {
-            //Debug.Log("Activé");
-            ps.gameObject.SetActive(true);
+            activated = true;
             ps.Play();
             teleporter.TargetActive();
         }
@@ -28,11 +32,11 @@ public class Target : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponentInParent<Cube>() != null)
+        if (other.GetComponentInParent<Cube>() != null && activated)
         {
-            //Debug.Log("Désactivé");
-            ps.gameObject.SetActive(false);
+            activated = false;
             ps.Stop();
+            ps.Clear();
             teleporter.TargetDesactive();
         }
     }

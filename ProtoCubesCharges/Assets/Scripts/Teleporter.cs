@@ -5,22 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class Teleporter : MonoBehaviour
 {
-    [SerializeField] private int nbTargetTotal;
-    [SerializeField] private int nbTargetActivated;
     public List<Target> targets;
+
+    public delegate void TargetUpdate();
+    public event TargetUpdate OnTargetUpdate;
+
+    [SerializeField] private int nbTargets;
     private ParticleSystem particulesSystem;
-
     private Collider teleporterZone;
-
 
     void Start()
     {
         foreach ( Target target in targets)
         {
-            target.teleporter = this;
+            target.SetTeleporter(this);
         }
-        nbTargetTotal = targets.Count;
-        nbTargetActivated = 0;
+        nbTargets = targets.Count;
 
         teleporterZone = GetComponent<Collider>();
         teleporterZone.enabled = false;
@@ -31,19 +31,25 @@ public class Teleporter : MonoBehaviour
 
     public void TargetActive()
     {
-        nbTargetActivated++;
         CheckAllTargets();
     }
 
     public void TargetDesactive()
     {
-        nbTargetActivated--;
         CheckAllTargets();
     }
 
     private void CheckAllTargets()
     {
-        if (nbTargetActivated >= nbTargetTotal)
+        OnTargetUpdate(); //événement lancé pour que l'UI se mette à jour
+
+        bool allTargetsActivated = true;
+        foreach (Target t in targets)
+        {
+            if (t.IsActivated == false) allTargetsActivated = false;
+        }
+
+        if (allTargetsActivated)
         {
             teleporterZone.enabled = true;
             particulesSystem.Play();
@@ -51,6 +57,7 @@ public class Teleporter : MonoBehaviour
         else
         {
             particulesSystem.Stop();
+            particulesSystem.Clear();
             teleporterZone.enabled = false;
         }
     }

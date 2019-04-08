@@ -4963,6 +4963,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff6e673b30b8a445b6e29b1680d46c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbTargetTotal: 0
-  nbTargetActivated: 0
   targets: []
+  nbTargets: 0
