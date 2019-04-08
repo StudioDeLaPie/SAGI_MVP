@@ -19,7 +19,6 @@ public class UIFeedbackTargets : MonoBehaviour
         teleporter.OnTargetUpdate += TargetUpdate;
         foreach(Target target in teleporter.targets)
         {
-            Debug.Log(target.name);
             targets.Add(target, UI_AddTarget());
         }
 
