@@ -26,17 +26,20 @@ public class PlaqueAPulte : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Rigidbody rg = other.GetComponent<Rigidbody>();
+        Rigidbody rg = other.transform.root.GetComponent<Rigidbody>(); //on récupère le rigidbody à la racine
 
-        if(rg == null)//Si on a pas trouvé de rigidbody c'est qu'il s'agit d'un cube ou autre chose
+        if(rg == null)//Au cas où le rigidbody n'est pas à la racine
         {
-            rg = other.gameObject.GetComponentInParent<Rigidbody>();//On cherche dans les parents un rigidbody
+            rg = other.transform.root.GetComponentInChildren<Rigidbody>();//On cherche dans les enfants
         }
 
         if (rg != null) 
-        {            
-            rg.velocity = Vector3.zero;
-            rg.AddForce(Vector3.up * force);
+        {
+            Vector3 newVelocity = transform.InverseTransformVector(rg.velocity);
+            newVelocity.y = force;
+            rg.velocity = transform.TransformVector(newVelocity);
+            //rg.velocity = Vector3.zero;
+            //rg.AddForce(Vector3.up * force);
             StartCoroutine(AnimationActivation());
         }       
     }

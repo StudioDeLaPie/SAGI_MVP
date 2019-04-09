@@ -27,15 +27,35 @@ public class Gravity : MonoBehaviour
             rb.AddForce(0, -gravityStrenght, 0);
         else if (charge.CurrentPoids != 0)
         {
-            //Debug.Log(rb.velocity.y);
+            //Chute
             rb.AddForce(0, -(gravityStrenght * Mathf.Sign(charge.CurrentPoids)), 0);
-            if (Mathf.Abs(charge.CurrentPoids) == 1 && Mathf.Abs(rb.velocity.y) > maxVelocityWeight1)
+
+            //Contrôle de la vélocité maximale sur l'axe de chute
+            bool brake = false;
+            switch (charge.CurrentPoids)
             {
-                rb.velocity = new Vector3(rb.velocity.x, -(maxVelocityWeight1 * charge.CurrentPoids), rb.velocity.z);
+                case 2:
+                    if (rb.velocity.y < -maxVelocityWeight2)
+                        brake = true;
+                    break;
+                case 1:
+                    if (rb.velocity.y < -maxVelocityWeight1)
+                        brake = true;
+                    break;
+                case -1:
+                    if (rb.velocity.y > maxVelocityWeight1)
+                        brake = true;
+                    break;
+                case -2:
+                    if (rb.velocity.y > maxVelocityWeight2)
+                        brake = true;
+                    break;
             }
-            if (Mathf.Abs(charge.CurrentPoids) == 2 && Mathf.Abs(rb.velocity.y) > maxVelocityWeight2)
+            if (brake)
             {
-                rb.velocity = new Vector3(rb.velocity.x, -(maxVelocityWeight2 * charge.CurrentPoids), rb.velocity.z);
+                rb.velocity = new Vector3(rb.velocity.x,
+                                            -((Mathf.Abs(charge.CurrentPoids) == 1 ? maxVelocityWeight1 : maxVelocityWeight2) * charge.CurrentPoids),
+                                            rb.velocity.z);
             }
         }
     }

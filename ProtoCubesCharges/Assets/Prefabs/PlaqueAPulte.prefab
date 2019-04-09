@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleAnimate: {fileID: 7508260432913685233}
-  force: 15000
+  force: 1000
   durationApparition: 0.2
 --- !u!65 &3887116087917521855
 BoxCollider:

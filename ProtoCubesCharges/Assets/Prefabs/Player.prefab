@@ -10059,6 +10059,7 @@ MonoBehaviour:
   maxRange: 3
   scrollSpeed: 0.15
   breakForce: 500000
+  soundManagerPlayer: {fileID: 0}
 --- !u!114 &2959820071246773809
 MonoBehaviour:
   m_ObjectHideFlags: 0

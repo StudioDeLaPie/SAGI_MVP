@@ -251,7 +251,7 @@ MonoBehaviour:
   isPlayer: 0
   maxVelocityWeight1: 1
   maxVelocityWeight2: 5
-  gravityStrenght: 200
+  gravityStrenght: 426
 --- !u!114 &5631224695609914296
 MonoBehaviour:
   m_ObjectHideFlags: 0
