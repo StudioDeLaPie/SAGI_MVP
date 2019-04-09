@@ -11,7 +11,9 @@ public class RAP : MonoBehaviour
     public float maxRange = 6.0f;
     public float scrollSpeed = 0.1f;
 
-    public float breakForce;
+    public float breakForce;  
+
+    public SoundManagerPlayer soundManagerPlayer;    
 
     private Transform transformRAP;
     private FeedbackRAP feedbackRAP;
@@ -19,6 +21,8 @@ public class RAP : MonoBehaviour
     private bool active;
     private Rigidbody touchedObject;
     private float minRangeFromTouchedObject;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,7 @@ public class RAP : MonoBehaviour
         InitJoint();
         feedbackRAP = GetComponent<FeedbackRAP>();
         goRAP.SetActive(false);
+        soundManagerPlayer = GetComponentsInChildren<SoundManagerPlayer>()[0];
     }
 
     // Update is called once per frame
@@ -42,6 +47,7 @@ public class RAP : MonoBehaviour
             if (active)
             {
                 Detache();
+                soundManagerPlayer.PlayOneShotRAP_AttacheDetache();                
             }
             else
             {
@@ -62,6 +68,7 @@ public class RAP : MonoBehaviour
     {
         InitJoint();
         Detache();
+        soundManagerPlayer.PlayOneShotRAP_Breack();        
     }
 
     private void Attache()
@@ -70,6 +77,7 @@ public class RAP : MonoBehaviour
         {
             if (touchedObject.GetComponent<Cube>() != null && !touchedObject.GetComponent<Cube>().Materialised) //s'il s'agit d'un cube non-matérialisé
             {
+                soundManagerPlayer.PlayOneShotRAP_AttacheDetache();
                 goRAP.SetActive(true);
                 jointRAP.connectedBody = touchedObject;
 
@@ -82,7 +90,11 @@ public class RAP : MonoBehaviour
                 feedbackRAP.Active(touchedObject.transform);
 
             }
+            else //Si on touche un cube figé
+                soundManagerPlayer.PlayOneShotRAP_Fail();
         }
+        else //Si on touche rien
+            soundManagerPlayer.PlayOneShotRAP_Fail();
     }
 
     public void Detache()
@@ -93,6 +105,8 @@ public class RAP : MonoBehaviour
         goRAP.SetActive(false);
         active = false;
         feedbackRAP.Desactive();
+
+        
     }
 
     private bool CalculateRayCast()

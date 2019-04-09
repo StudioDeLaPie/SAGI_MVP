@@ -7,9 +7,14 @@ public class Target : MonoBehaviour
     private Teleporter teleporter;
     private ParticleSystem ps;
     private bool activated = false;
+    public AudioClip soundActivation;
+    public AudioClip soundDesactivation;
+
+    private AudioSource audioSource;
 
     public void SetTeleporter(Teleporter t) { teleporter = t; }
     public bool IsActivated { get { return activated; } }
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +22,8 @@ public class Target : MonoBehaviour
         ps = GetComponentInChildren<ParticleSystem>();
         ps.gameObject.SetActive(true);
         ps.Stop();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,6 +37,15 @@ public class Target : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponentInParent<Cube>() != null && !activated)
+        {
+            audioSource.PlayOneShot(soundActivation);
+        }
+    }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.GetComponentInParent<Cube>() != null && activated)
@@ -38,6 +54,7 @@ public class Target : MonoBehaviour
             ps.Stop();
             ps.Clear();
             teleporter.TargetDesactive();
+            audioSource.PlayOneShot(soundDesactivation);
         }
     }
 }
