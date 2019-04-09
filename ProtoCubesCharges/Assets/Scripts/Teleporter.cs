@@ -10,6 +10,10 @@ public class Teleporter : MonoBehaviour
     public delegate void TargetUpdate();
     public event TargetUpdate OnTargetUpdate;
 
+    public AudioClip soundActive;
+
+    private AudioSource audioSource;
+
     [SerializeField] private int nbTargets;
     private ParticleSystem particulesSystem;
     private Collider teleporterZone;
@@ -27,6 +31,10 @@ public class Teleporter : MonoBehaviour
 
         particulesSystem = GetComponent<ParticleSystem>();
         particulesSystem.Stop();
+
+        audioSource = GetComponent<AudioSource>();
+        audioSource.loop = true;
+        audioSource.clip = soundActive;
     }
 
     public void TargetActive()
@@ -53,9 +61,11 @@ public class Teleporter : MonoBehaviour
         {
             teleporterZone.enabled = true;
             particulesSystem.Play();
+            audioSource.Play();
         }
         else
         {
+            audioSource.Stop();
             particulesSystem.Stop();
             particulesSystem.Clear();
             teleporterZone.enabled = false;
