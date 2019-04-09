@@ -370,7 +370,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh59976
+  m_Name: pb_Mesh138492
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -897,7 +897,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh59962
+  m_Name: pb_Mesh138478
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1072,7 +1072,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh59936
+  m_Name: pb_Mesh138452
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3781,6 +3781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Target (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 913548881172053668, guid: a51ead4bb744ca54bb96a4c455206007,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5475990337001742932, guid: a51ead4bb744ca54bb96a4c455206007,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4328,12 +4333,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7508260432913685233 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7508260432913685233, guid: 1cba25b8e5a0cea4fa435352f9772668,
-    type: 3}
-  m_PrefabInstance: {fileID: 7514006746765863756}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7514006746765863756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4401,21 +4400,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2440817873158504060, guid: 1cba25b8e5a0cea4fa435352f9772668,
-        type: 3}
-      propertyPath: simpleAnimate
-      value: 
-      objectReference: {fileID: 7508260432913685233}
-    - target: {fileID: 2440817873158504060, guid: 1cba25b8e5a0cea4fa435352f9772668,
-        type: 3}
-      propertyPath: force
-      value: 15000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2440817873158504060, guid: 1cba25b8e5a0cea4fa435352f9772668,
-        type: 3}
-      propertyPath: durationApparition
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cba25b8e5a0cea4fa435352f9772668, type: 3}
 --- !u!1 &8797503168543776668 stripped
@@ -4439,6 +4423,7 @@ MonoBehaviour:
   targets:
   - {fileID: 795723071}
   - {fileID: 1945504956}
+  soundActive: {fileID: 0}
   nbTargets: 0
 --- !u!1001 &8833717345831898254
 PrefabInstance:
