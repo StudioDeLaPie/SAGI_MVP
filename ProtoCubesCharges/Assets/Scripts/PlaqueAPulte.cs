@@ -8,9 +8,14 @@ public class PlaqueAPulte : MonoBehaviour
     public float force = 15000;
     public float durationApparition = 0.2f;
 
+    public AudioClip soundBounce;
+
+    private AudioSource audioSource;
+
     void Start()
     {
         simpleAnimate.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private IEnumerator AnimationActivation()
@@ -37,6 +42,7 @@ public class PlaqueAPulte : MonoBehaviour
         {            
             rg.velocity = Vector3.zero;
             rg.AddForce(Vector3.up * force);
+            audioSource.PlayOneShot(soundBounce);
             StartCoroutine(AnimationActivation());
         }       
     }
