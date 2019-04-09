@@ -15,11 +15,17 @@ public class UIFeedbackTargets : MonoBehaviour
 
     void Start()
     {
-        teleporter = GameObject.Find("Teleporter").GetComponent<Teleporter>();
-        teleporter.OnTargetUpdate += TargetUpdate;
-        foreach(Target target in teleporter.targets)
+        if (GameObject.Find("Teleporter") != null)
         {
-            targets.Add(target, UI_AddTarget());
+            teleporter = GameObject.Find("Teleporter").GetComponent<Teleporter>();
+            teleporter.OnTargetUpdate += TargetUpdate;
+            foreach (Target target in teleporter.targets)
+            {
+                targets.Add(target, UI_AddTarget());
+            }
+        } else
+        {
+            this.enabled = false;
         }
 
     }

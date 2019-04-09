@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    public GameObject go_hologramme;
-    public GameObject go_materialise;
-
+    [SerializeField] private bool materialised = false;
     private Charges charges;
-    private bool materialised;
-    private AimCamera feedbacks;
     private Rigidbody rb;
-    private MaterialManager materialManager;
+    private CubeFeedbackManager feedbackManager;
 
     public int NbCharges
     {
@@ -46,32 +42,29 @@ public class Cube : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         charges = GetComponent<Charges>();
-        go_hologramme.SetActive(true);
-        go_materialise.SetActive(false);
-        feedbacks = GetComponentInChildren<AimCamera>();
-        feedbacks.Materialise = false;
-        materialManager = GetComponent<MaterialManager>();
+        feedbackManager = GetComponent<CubeFeedbackManager>();
+        feedbackManager.Init(charges.CurrentCharge, charges.CurrentPoids, materialised);
     }
 
     public void Alourdir()
     {
         charges.RetraitChargeNegative();
-        materialManager.UpdateFeedback();
+        feedbackManager.Charges = charges.CurrentCharge;
+        feedbackManager.Poids = charges.CurrentPoids;
     }
 
     public void Alleger()
     {
         charges.AjoutChargeNegative();
-        materialManager.UpdateFeedback();
+        feedbackManager.Charges = charges.CurrentCharge;
+        feedbackManager.Poids = charges.CurrentPoids;
     }
 
     public void SwitchMaterialisation()
     {
         materialised = !materialised;
         rb.isKinematic = materialised;
-        go_hologramme.SetActive(!go_hologramme.activeSelf);
-        go_materialise.SetActive(!go_materialise.activeSelf);
-        feedbacks.Materialise = materialised;
+        feedbackManager.Materialise = materialised;
     }
 
     public void AttractionRepulsion(Vector3 hitNormal, bool isAttracting)
