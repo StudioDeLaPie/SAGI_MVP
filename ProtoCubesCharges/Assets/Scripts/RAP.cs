@@ -105,8 +105,6 @@ public class RAP : MonoBehaviour
         goRAP.SetActive(false);
         active = false;
         feedbackRAP.Desactive();
-
-        
     }
 
     private bool CalculateRayCast()
@@ -117,6 +115,9 @@ public class RAP : MonoBehaviour
         return result;
     }
 
+    /// <summary>
+    /// Crée un nouveau ConfigurableJoint avec les caractéristiques voulues pour le RAP
+    /// </summary>
     private void InitJoint()
     {
         if (goRAP.GetComponent<ConfigurableJoint>() != null)

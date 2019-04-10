@@ -6,14 +6,14 @@ public class CAP : MonoBehaviour
 {
     public Transform firePoint;
     public LayerMask layerMask;
-
+    public GameObject feedbackCap;
 
     private Cube touchedObject;
+    private Coroutine feedbackCoroutine;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        feedbackCap.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,6 +25,10 @@ public class CAP : MonoBehaviour
             {
                 if (GetComponent<RAP>() != null)
                     GetComponent<RAP>().Detache();
+
+                if (feedbackCoroutine != null) StopCoroutine(feedbackCoroutine);
+
+                feedbackCoroutine = StartCoroutine(DisplayFeedback());
                 touchedObject.SwitchMaterialisation();
             }
         }
@@ -36,5 +40,19 @@ public class CAP : MonoBehaviour
         if (result)
             touchedObject = hit.transform.GetComponent<Cube>();
         return result;
+    }
+
+    private IEnumerator DisplayFeedback()
+    {
+        //float time = Time.time;
+        int nbFrame = 0;
+        feedbackCap.SetActive(true);
+        //if (Time.time < time + 0.5f)
+        if (nbFrame < 3)
+        {
+            nbFrame++;
+            yield return null;
+        }
+        feedbackCap.SetActive(false);
     }
 }
