@@ -14,7 +14,6 @@ public class Teleporter : MonoBehaviour
 
     private AudioSource audioSource;
 
-    [SerializeField] private int nbTargets;
     private ParticleSystem particulesSystem;
     private Collider teleporterZone;
 
@@ -24,7 +23,6 @@ public class Teleporter : MonoBehaviour
         {
             target.SetTeleporter(this);
         }
-        nbTargets = targets.Count;
 
         teleporterZone = GetComponent<Collider>();
         teleporterZone.enabled = false;

@@ -530,6 +530,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 807430746454829211, guid: 12aaf1a55303860409356d1a53132495,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -9211005917441383442, guid: 380b19773fa14514faa784ade6a50f46,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12aaf1a55303860409356d1a53132495, type: 3}
 --- !u!4 &2277822571420385160 stripped
