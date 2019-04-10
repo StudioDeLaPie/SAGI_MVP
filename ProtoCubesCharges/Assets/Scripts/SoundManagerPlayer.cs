@@ -14,6 +14,7 @@ public class SoundManagerPlayer : MonoBehaviour
 
     public AudioClip soundCAP_Materialise;
     public AudioClip soundCAP_Dematerialise;
+    public AudioClip soundCAP_Fail;
 
     public AudioClip soundORA_Charge;
     public AudioClip soundORA_Shot;
@@ -71,6 +72,11 @@ public class SoundManagerPlayer : MonoBehaviour
     public void PlayOneShotCAP_Dematerialise()
     {
         audioSourceCAP.PlayOneShot(soundCAP_Dematerialise);
+    }
+
+    public void PLayOneShotCAP_Fail()
+    {
+        audioSourceCAP.PlayOneShot(soundCAP_Fail);
     }
 
     public void PlayOneShotORA_Charge()
