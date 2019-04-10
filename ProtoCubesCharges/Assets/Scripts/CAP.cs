@@ -10,10 +10,12 @@ public class CAP : MonoBehaviour
 
     private Cube touchedObject;
     private Coroutine feedbackCoroutine;
+    private SoundManagerPlayer soundManagerPlayer;
 
     private void Start()
     {
         feedbackCap.SetActive(false);
+        soundManagerPlayer = GetComponentInChildren<SoundManagerPlayer>();
     }
 
     // Update is called once per frame
@@ -27,10 +29,15 @@ public class CAP : MonoBehaviour
                     GetComponent<RAP>().Detache();
 
                 if (feedbackCoroutine != null) StopCoroutine(feedbackCoroutine);
-
                 feedbackCoroutine = StartCoroutine(DisplayFeedback());
+
+                if (touchedObject.Materialised) soundManagerPlayer.PlayOneShotCAP_Dematerialise();
+                else soundManagerPlayer.PlayOneShotCAP_Materialise();
+
                 touchedObject.SwitchMaterialisation();
             }
+            else
+                soundManagerPlayer.PLayOneShotCAP_Fail();
         }
     }
 
