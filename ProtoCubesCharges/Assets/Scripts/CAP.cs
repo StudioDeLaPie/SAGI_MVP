@@ -44,13 +44,10 @@ public class CAP : MonoBehaviour
 
     private IEnumerator DisplayFeedback()
     {
-        //float time = Time.time;
-        int nbFrame = 0;
+        float time = Time.time;
         feedbackCap.SetActive(true);
-        //if (Time.time < time + 0.5f)
-        if (nbFrame < 3)
+        if (Time.time < time + 1f)
         {
-            nbFrame++;
             yield return null;
         }
         feedbackCap.SetActive(false);

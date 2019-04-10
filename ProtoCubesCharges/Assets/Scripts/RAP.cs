@@ -13,8 +13,7 @@ public class RAP : MonoBehaviour
 
     public float breakForce;  
 
-    public SoundManagerPlayer soundManagerPlayer;    
-
+    private SoundManagerPlayer soundManagerPlayer;    
     private Transform transformRAP;
     private FeedbackRAP feedbackRAP;
     private ConfigurableJoint jointRAP;
@@ -32,7 +31,7 @@ public class RAP : MonoBehaviour
         InitJoint();
         feedbackRAP = GetComponent<FeedbackRAP>();
         goRAP.SetActive(false);
-        soundManagerPlayer = GetComponentsInChildren<SoundManagerPlayer>()[0];
+        soundManagerPlayer = GetComponentInChildren<SoundManagerPlayer>();
     }
 
     // Update is called once per frame
