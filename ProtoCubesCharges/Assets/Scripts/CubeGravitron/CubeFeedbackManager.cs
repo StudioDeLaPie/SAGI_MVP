@@ -111,7 +111,7 @@ public class CubeFeedbackManager : MonoBehaviour
         {
             go_list_charges[i].SetActive(true);
             go_list_charges[i].transform.SetPositionAndRotation(go_parentCharges.transform.position, go_parentCharges.transform.rotation);
-            go_list_charges[i].transform.Translate(0, 0.35f, 0, Space.Self);
+            go_list_charges[i].transform.Translate(0, 0.35f * transform.localScale.y, 0, Space.Self);
             go_list_charges[i].transform.RotateAround(go_parentCharges.transform.position, go_list_charges[i].transform.forward, i * (360 / _nbCharges));
         }
     }
