@@ -41,7 +41,7 @@ public class RAP : MonoBehaviour
         {
             JointBreak();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("RAP"))
         {
             if (active)
             {
@@ -54,9 +54,9 @@ public class RAP : MonoBehaviour
             }
         }
 
-        if (Input.mouseScrollDelta.y != 0 && active)
+        if (Input.GetAxis("Mouse ScrollWheel") != 0 && active)
         {
-            float newDistance = jointRAP.anchor.z + Input.mouseScrollDelta.y * scrollSpeed;
+            float newDistance = jointRAP.anchor.z + Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
             newDistance = Mathf.Clamp(newDistance, minRangeFromTouchedObject, maxRange);
             jointRAP.anchor = new Vector3(0, 0, newDistance);
             touchedObject.AddForce(0.1f, 0.1f, 0.1f);//Wake up le cube pour que le joint s'actualise

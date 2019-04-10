@@ -28,12 +28,12 @@ public class OMG : MonoBehaviour
     {
         if (Time.time > lastShot + cooldown)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("OMGAjout"))
             {
                 Shot(false);
             }
 
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("OMGRetrait"))
             {
                 Shot(true);
             }
