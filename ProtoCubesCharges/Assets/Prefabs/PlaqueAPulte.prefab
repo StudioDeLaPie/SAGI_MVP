@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 462792489062389944}
   - component: {fileID: 2440817873158504060}
   - component: {fileID: 3887116087917521855}
-  - component: {fileID: 4689134173318236759}
   - component: {fileID: 3515855141671220853}
+  - component: {fileID: 4689134173318236759}
   m_Layer: 0
   m_Name: PlaqueAPulte
   m_TagString: Untagged
@@ -66,6 +66,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9, y: 0.1, z: 1.9}
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &3515855141671220853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109733844370677863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378a02db6d4ead34ba1d536440d05273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  gizmo: {fileID: 2371067953441430358}
 --- !u!82 &4689134173318236759
 AudioSource:
   m_ObjectHideFlags: 0
@@ -162,20 +176,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3515855141671220853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109733844370677863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378a02db6d4ead34ba1d536440d05273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 0
-  gizmo: {fileID: 2371067953441430358}
 --- !u!1 &2371067953441430358
 GameObject:
   m_ObjectHideFlags: 0
