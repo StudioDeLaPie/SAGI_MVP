@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -19,7 +20,7 @@ public class GizmoPlaqueAPulte : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!active)
+        if (!active || EditorApplication.isPlaying)
         {
             gizmo.SetActive(false);
             return;

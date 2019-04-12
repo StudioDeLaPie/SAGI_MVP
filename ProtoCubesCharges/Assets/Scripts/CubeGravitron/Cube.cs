@@ -41,6 +41,7 @@ public class Cube : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.isKinematic = materialised;
         charges = GetComponent<Charges>();
         feedbackManager = GetComponent<CubeFeedbackManager>();
         feedbackManager.Init(charges.CurrentCharge, charges.CurrentPoids, materialised);
