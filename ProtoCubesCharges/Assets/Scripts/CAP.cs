@@ -7,6 +7,7 @@ public class CAP : MonoBehaviour
     public Transform firePoint;
     public LayerMask layerMask;
     public GameObject feedbackCap;
+    public float animationDuration;
 
     private Cube touchedObject;
     private Coroutine feedbackCoroutine;
@@ -53,7 +54,7 @@ public class CAP : MonoBehaviour
     {
         float time = Time.time;
         feedbackCap.SetActive(true);
-        if (Time.time < time + 1f)
+        while (Time.time < time + animationDuration)
         {
             yield return null;
         }

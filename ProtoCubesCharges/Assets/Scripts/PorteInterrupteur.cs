@@ -24,6 +24,7 @@ public class PorteInterrupteur : MonoBehaviour
             interrupteur.SetPorte(this);
         }
         scaleInitial = goPorte.transform.localScale;
+        StartCoroutine(FermeturePorte());
         //Do GameObject set active true;             
     }
 
@@ -88,12 +89,13 @@ public class PorteInterrupteur : MonoBehaviour
 
         while (isClose == false)
         {
-            goPorte.transform.localScale += new Vector3(vitesse,vitesse,vitesse);
-
             if (goPorte.transform.localScale.x >= scaleInitial.x)
             {
                 isClose = true;
             }
+            else
+                goPorte.transform.localScale += new Vector3(vitesse, vitesse, vitesse);
+
             yield return null;
         }
         coroutineFermeture = null;

@@ -44,14 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35394a1a77bb0a47a728af2cfd8c174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interrupteurs:
-  - {fileID: 0}
-  - {fileID: 0}
+  interrupteurs: []
   goPorte: {fileID: 6858949938532430630}
   tailleMinimum: 0
   vitesse: 0.1
   soundActive: {fileID: 0}
-  nbInterrupteurs: 0
 --- !u!1 &6858949938532430630
 GameObject:
   m_ObjectHideFlags: 0
