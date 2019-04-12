@@ -8,7 +8,6 @@ public class GizmoPlaqueAPulte : MonoBehaviour
     public bool active = true;
     public GameObject gizmo;
 
-    private float gravity = 42.6f;
     private PlaqueAPulte plaque;
 
     // Start is called before the first frame update
@@ -29,9 +28,9 @@ public class GizmoPlaqueAPulte : MonoBehaviour
         {
             gizmo.SetActive(true);
             Vector3 gizmoScale = gizmo.transform.localScale;
-            float taille = (plaque.force * plaque.force) / (2 * gravity); //calcul de la hauteur d'un projectile
-            gizmo.transform.localScale = new Vector3(gizmoScale.x, taille, gizmoScale.z);
-            gizmo.transform.localPosition = new Vector3(0, taille / 2, 0);
+            //float haut = (plaque.force * plaque.force) / (2 * gravity); //calcul de la hauteur d'un projectile
+            gizmo.transform.localScale = new Vector3(gizmoScale.x, plaque.hauteurCube2 * 2, gizmoScale.z);
+            gizmo.transform.localPosition = new Vector3(0, plaque.hauteurCube2, 0);
         }
 
         if (transform.localScale.y != 1)
