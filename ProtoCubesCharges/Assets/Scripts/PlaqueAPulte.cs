@@ -30,16 +30,16 @@ public class PlaqueAPulte : MonoBehaviour
         simpleAnimate.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Projection(Collider other)
     {
         Rigidbody rg = other.transform.root.GetComponent<Rigidbody>(); //on récupère le rigidbody à la racine
 
-        if(rg == null)//Au cas où le rigidbody n'est pas à la racine
+        if (rg == null)//Au cas où le rigidbody n'est pas à la racine
         {
             rg = other.transform.root.GetComponentInChildren<Rigidbody>();//On cherche dans les enfants
         }
 
-        if (rg != null)
+        if (rg != null && other.transform.root.GetComponent<Gravity>().enabled)
         {
             Charges charges = other.transform.root.GetComponent<Charges>();
             Vector3 newVelocity = transform.InverseTransformVector(rg.velocity);
@@ -56,10 +56,20 @@ public class PlaqueAPulte : MonoBehaviour
                     newVelocity.y = Mathf.Sqrt(hauteurCube2 * 2 * gravity);
                     break;
             }
-           
+
             rg.velocity = transform.TransformVector(newVelocity);
             audioSource.PlayOneShot(soundBounce);
             StartCoroutine(AnimationActivation());
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Projection(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        Projection(other);
     }
 }
