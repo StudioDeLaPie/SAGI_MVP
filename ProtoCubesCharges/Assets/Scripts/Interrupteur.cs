@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Interrupteur : MonoBehaviour
 {
-    private PorteInterrupteur porteInterrupteur;
     private ParticleSystem ps;
     private bool activated = false;
 
     public AudioClip soundActivation;
     public AudioClip soundDesactivation;
 
+    public delegate void InterrupteurUpdate();
+    public event InterrupteurUpdate OnInterrupteurUpdate;
+
     private AudioSource audioSource;
 
-    public void SetPorte(PorteInterrupteur porte) { porteInterrupteur = porte; }
     public bool IsActivated { get { return activated; } }
 
 
@@ -33,7 +34,7 @@ public class Interrupteur : MonoBehaviour
         {
             activated = true;
             ps.Play();
-            porteInterrupteur.InterrupteurActive();
+            OnInterrupteurUpdate();
         }
     }
 
@@ -53,7 +54,7 @@ public class Interrupteur : MonoBehaviour
             activated = false;
             ps.Stop();
             ps.Clear();
-            porteInterrupteur.InterrupteurDesactive();
+            OnInterrupteurUpdate();
             audioSource.PlayOneShot(soundDesactivation);
         }
     }

@@ -21,21 +21,11 @@ public class PorteInterrupteur : MonoBehaviour
     {
         foreach (Interrupteur interrupteur in interrupteurs)
         {
-            interrupteur.SetPorte(this);
+            interrupteur.OnInterrupteurUpdate += CheckAlInterrupteurs;
         }
         scaleInitial = goPorte.transform.localScale;
         StartCoroutine(FermeturePorte());
         //Do GameObject set active true;             
-    }
-
-    public void InterrupteurActive()
-    {
-        CheckAlInterrupteurs();
-    }
-
-    public void InterrupteurDesactive()
-    {
-        CheckAlInterrupteurs();
     }
 
     private void CheckAlInterrupteurs()
