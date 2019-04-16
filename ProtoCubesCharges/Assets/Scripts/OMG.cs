@@ -13,17 +13,19 @@ public class OMG : MonoBehaviour
 
     public Text txt_charges;
 
-    public SoundManagerPlayer soundManagerPlayer;
 
     private RaycastHit hit;
     private Cube touchedObject;
     private float lastShot;
+    private SoundManagerPlayer soundManagerPlayer;
+    private FeedbackOMG feedback;
 
     private void Start()
     {
         lastShot = Time.time;
         txt_charges.text = "Charges : " + currentCharges + " / " + maxCharges;
         soundManagerPlayer = GetComponentInChildren<SoundManagerPlayer>();
+        feedback = GetComponent<FeedbackOMG>();
     }
 
     private void Update()
@@ -32,40 +34,44 @@ public class OMG : MonoBehaviour
         {
             if (Input.GetButtonDown("OMGAjout"))
             {
-                Shot(false);
+                Shot(true);
             }
 
             if (Input.GetButtonDown("OMGRetrait"))
             {
-                Shot(true);
+                Shot(false);
             }
         }
     }
 
-    private void Shot(bool alourdir)
+    private void Shot(bool ajout)
     {
         if (CalculateRayCast())
         {
             if (touchedObject != null)
             {
-                if (alourdir && currentCharges < maxCharges && touchedObject.NbCharges > 0)
-                {
-                    touchedObject.Alourdir();
-                    currentCharges++;
-                    soundManagerPlayer.PlayOneShotOMG_Negatif();
-                    //currentCharges += touchedObject.IncreaseCharge(currentCharges, maxCharges - currentCharges);
-                }
-                else if (!alourdir && currentCharges > 0 && touchedObject.NbChargesAjoutables > 0)
+                if (ajout && currentCharges > 0 && touchedObject.NbChargesAjoutables > 0) //Ajout
                 {
                     touchedObject.Alleger();
                     currentCharges--;
                     soundManagerPlayer.PlayOneShotOMGPositif();
-                    //currentCharges += touchedObject.DecreaseCharge(currentCharges, maxCharges - currentCharges);
+                    feedback.ShotAjout(hit.transform);
                 }
+                else if (!ajout && currentCharges < maxCharges && touchedObject.NbCharges > 0) //Retrait
+                {
+                    touchedObject.Alourdir();
+                    currentCharges++;
+                    soundManagerPlayer.PlayOneShotOMG_Negatif();
+                    feedback.ShotRetrait(hit.transform);
+                }
+                else if ((ajout && (currentCharges == 0 || touchedObject.NbChargesAjoutables == 0)) || (!ajout && (currentCharges == maxCharges || touchedObject.NbCharges == 0)))
+                    soundManagerPlayer.PlayOneShotOMG_Fail();
+
                 txt_charges.text = "Charges : " + currentCharges + " / " + maxCharges;
             }
             else
                 soundManagerPlayer.PlayOneShotOMG_Fail();
+            
         }
         else
             soundManagerPlayer.PlayOneShotOMG_Fail();
