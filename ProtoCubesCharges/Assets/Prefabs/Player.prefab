@@ -10041,6 +10041,7 @@ MonoBehaviour:
   currentCharges: 1073741823
   maxCharges: 2147483647
   txt_charges: {fileID: 2506187382210601621}
+  soundManagerPlayer: {fileID: 0}
 --- !u!114 &2968417032536792344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11140,8 +11141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdee8a7a8ecdb8468aac1ae4a728726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundOMG_Positif: {fileID: 0}
-  soundOMG_Negatif: {fileID: 0}
+  soundOMG_Positif: {fileID: 8300000, guid: 1fb899aba99c45542bf06311ee1ef2ae, type: 3}
+  soundOMG_Negatif: {fileID: 8300000, guid: 4a394f75db279524d8633fc2de721faa, type: 3}
+  soundOMG_Fail: {fileID: 8300000, guid: df5bb732ab58c7c41bc22bffd47e7e2d, type: 3}
   soundRAP_AttacheDetache: {fileID: 8300000, guid: 651e4499e3dc8074fa68a59f999beb4e,
     type: 3}
   soundRAP_Breack: {fileID: 8300000, guid: dc3aa012561304848a764475a3d54586, type: 3}

@@ -13,8 +13,10 @@ public class PorteInterrupteur : MonoBehaviour
     private Vector3 scaleInitial;
     private Coroutine coroutineOuverture;
     private Coroutine coroutineFermeture;
+    private bool ouvert = false;
 
     public AudioClip soundActive;
+    public AudioClip soundDesactive;
     private AudioSource audioSource;
 
     void Start()
@@ -38,15 +40,18 @@ public class PorteInterrupteur : MonoBehaviour
             if (interrupt.IsActivated == false) allInterrupteursActivated = false;
         }
 
-        if (allInterrupteursActivated)
+        if (allInterrupteursActivated && !ouvert)
         {
             coroutineOuverture = StartCoroutine(OuverturePorte());
             audioSource.PlayOneShot(soundActive);
+            ouvert = true;
         }
-        else
+        else if (!allInterrupteursActivated && ouvert)
         {
             coroutineFermeture = StartCoroutine(FermeturePorte());
-            audioSource.PlayOneShot(soundActive);
+            audioSource.PlayOneShot(soundDesactive);
+
+            ouvert = false;
         }
     }
 
