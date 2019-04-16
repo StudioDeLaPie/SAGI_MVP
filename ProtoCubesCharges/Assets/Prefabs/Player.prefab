@@ -9892,6 +9892,7 @@ GameObject:
   - component: {fileID: 2959820071246773809}
   - component: {fileID: 807430746454829211}
   - component: {fileID: 4497318413384488067}
+  - component: {fileID: 4104183098409835965}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -10041,7 +10042,6 @@ MonoBehaviour:
   currentCharges: 1073741823
   maxCharges: 2147483647
   txt_charges: {fileID: 2506187382210601621}
-  soundManagerPlayer: {fileID: 0}
 --- !u!114 &2968417032536792344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10191,6 +10191,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 2946474787406466516}
   gunPoint: {fileID: 2457514443263377297}
+--- !u!114 &4104183098409835965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417631472413956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba36d390dab05364fa1ee99f7587a6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPoint: {fileID: 2457514443263377297}
+  go_charge: {fileID: 7354352756732753983, guid: f912b6c430ffd4643b00e1e172a2ecbb,
+    type: 3}
+  timeToTravel: 0.14
 --- !u!1 &1548675357627162
 GameObject:
   m_ObjectHideFlags: 0

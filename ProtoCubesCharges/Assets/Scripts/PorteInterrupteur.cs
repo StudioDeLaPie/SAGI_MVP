@@ -90,7 +90,6 @@ public class PorteInterrupteur : MonoBehaviour
             if (goPorte.transform.localScale.x >= scaleInitial.x)
             {
                 isClose = true;
-                Debug.Log("Fermé");
             }
             else
                 goPorte.transform.localScale += new Vector3(vitesse, vitesse, vitesse);
