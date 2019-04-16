@@ -13,6 +13,7 @@ public class OMG : MonoBehaviour
 
     public Text txt_charges;
 
+    public SoundManagerPlayer soundManagerPlayer;
 
     private RaycastHit hit;
     private Cube touchedObject;
@@ -22,6 +23,7 @@ public class OMG : MonoBehaviour
     {
         lastShot = Time.time;
         txt_charges.text = "Charges : " + currentCharges + " / " + maxCharges;
+        soundManagerPlayer = GetComponentInChildren<SoundManagerPlayer>();
     }
 
     private void Update()
@@ -50,17 +52,23 @@ public class OMG : MonoBehaviour
                 {
                     touchedObject.Alourdir();
                     currentCharges++;
+                    soundManagerPlayer.PlayOneShotOMG_Negatif();
                     //currentCharges += touchedObject.IncreaseCharge(currentCharges, maxCharges - currentCharges);
                 }
                 else if (!alourdir && currentCharges > 0 && touchedObject.NbChargesAjoutables > 0)
                 {
                     touchedObject.Alleger();
                     currentCharges--;
+                    soundManagerPlayer.PlayOneShotOMGPositif();
                     //currentCharges += touchedObject.DecreaseCharge(currentCharges, maxCharges - currentCharges);
                 }
                 txt_charges.text = "Charges : " + currentCharges + " / " + maxCharges;
             }
+            else
+                soundManagerPlayer.PlayOneShotOMG_Fail();
         }
+        else
+            soundManagerPlayer.PlayOneShotOMG_Fail();
         lastShot = Time.time;
     }
 

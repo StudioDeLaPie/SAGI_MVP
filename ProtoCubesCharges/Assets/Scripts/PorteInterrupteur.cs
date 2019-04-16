@@ -25,7 +25,9 @@ public class PorteInterrupteur : MonoBehaviour
         }
         scaleInitial = goPorte.transform.localScale;
         StartCoroutine(FermeturePorte());
-        //Do GameObject set active true;             
+        //Do GameObject set active true; 
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void CheckAlInterrupteurs()
@@ -38,12 +40,13 @@ public class PorteInterrupteur : MonoBehaviour
 
         if (allInterrupteursActivated)
         {
-
             coroutineOuverture = StartCoroutine(OuverturePorte());
+            audioSource.PlayOneShot(soundActive);
         }
         else
         {
             coroutineFermeture = StartCoroutine(FermeturePorte());
+            audioSource.PlayOneShot(soundActive);
         }
     }
 
@@ -82,6 +85,7 @@ public class PorteInterrupteur : MonoBehaviour
             if (goPorte.transform.localScale.x >= scaleInitial.x)
             {
                 isClose = true;
+                Debug.Log("Fermé");
             }
             else
                 goPorte.transform.localScale += new Vector3(vitesse, vitesse, vitesse);

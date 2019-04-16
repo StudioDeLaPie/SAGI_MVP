@@ -7,6 +7,7 @@ public class SoundManagerPlayer : MonoBehaviour
 {           
     public AudioClip soundOMG_Positif;
     public AudioClip soundOMG_Negatif;
+    public AudioClip soundOMG_Fail;
 
     public AudioClip soundRAP_AttacheDetache;
     public AudioClip soundRAP_Breack;
@@ -47,6 +48,11 @@ public class SoundManagerPlayer : MonoBehaviour
     public void PlayOneShotOMG_Negatif()
     {
         audioSourceOMG.PlayOneShot(soundOMG_Negatif);
+    }
+
+    public void PlayOneShotOMG_Fail()
+    {
+        audioSourceOMG.PlayOneShot(soundOMG_Fail);
     }
 
     public void PlayOneShotRAP_AttacheDetache()
