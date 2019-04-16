@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 4674114549199999319}
   - component: {fileID: 5842362511866933135}
   - component: {fileID: 8642470780432492579}
+  - component: {fileID: 4734784549459128297}
   m_Layer: 2
   m_Name: Particle System
   m_TagString: Untagged
@@ -4975,3 +4976,15 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &4734784549459128297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225408668667451570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 899b51ec8dce36c4493d811ec5bea03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
