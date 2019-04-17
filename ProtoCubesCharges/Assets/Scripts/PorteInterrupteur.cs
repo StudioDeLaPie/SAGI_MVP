@@ -7,17 +7,18 @@ public class PorteInterrupteur : MonoBehaviour
     public List<Interrupteur> interrupteurs;
 
     public GameObject goPorte;
-    public float tailleMinimum;
+    public float tailleMinimum = 0.2f;
     public float vitesse = 0.01f;
 
+    public AudioClip soundActive;
+    public AudioClip soundDesactive;
+
+    private AudioSource audioSource;
     private Vector3 scaleInitial;
     private Coroutine coroutineOuverture;
     private Coroutine coroutineFermeture;
     private bool ouvert = false;
 
-    public AudioClip soundActive;
-    public AudioClip soundDesactive;
-    private AudioSource audioSource;
 
     void Start()
     {
@@ -64,9 +65,9 @@ public class PorteInterrupteur : MonoBehaviour
 
         while (isOpen == false)
         {
-            goPorte.transform.localScale -= new Vector3(vitesse, vitesse, vitesse);
+            goPorte.transform.localScale *= vitesse;
 
-            if (goPorte.transform.localScale.x <= tailleMinimum)
+            if (goPorte.transform.localScale.magnitude <= tailleMinimum)
             {
                 isOpen = true;
             }
@@ -89,10 +90,11 @@ public class PorteInterrupteur : MonoBehaviour
         {
             if (goPorte.transform.localScale.x >= scaleInitial.x)
             {
+                goPorte.transform.localScale = scaleInitial;
                 isClose = true;
             }
             else
-                goPorte.transform.localScale += new Vector3(vitesse, vitesse, vitesse);
+                goPorte.transform.localScale /= vitesse;
 
             yield return null;
         }

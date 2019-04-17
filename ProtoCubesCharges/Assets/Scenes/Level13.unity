@@ -914,7 +914,7 @@ PrefabInstance:
     - target: {fileID: 5475990337001742932, guid: 33825ea78d540d3488e898dbc341696d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.67
+      value: 11.55
       objectReference: {fileID: 0}
     - target: {fileID: 5475990337001742932, guid: 33825ea78d540d3488e898dbc341696d,
         type: 3}
@@ -970,6 +970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475990337001742932, guid: 33825ea78d540d3488e898dbc341696d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33825ea78d540d3488e898dbc341696d, type: 3}
@@ -1197,6 +1202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1774360810}
+  disableTextWhenActiveTarget: {fileID: 935381471}
+  disableTextWhenActiveInterrupt1: {fileID: 1369911916}
+  disableTextWhenActiveInterrupt2: {fileID: 233410468}
 --- !u!43 &304843006
 Mesh:
   m_ObjectHideFlags: 0
@@ -2341,7 +2349,7 @@ PrefabInstance:
     - target: {fileID: 5475990337001742932, guid: a51ead4bb744ca54bb96a4c455206007,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.67
+      value: 11.55
       objectReference: {fileID: 0}
     - target: {fileID: 5475990337001742932, guid: a51ead4bb744ca54bb96a4c455206007,
         type: 3}
@@ -2397,6 +2405,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475990337001742932, guid: a51ead4bb744ca54bb96a4c455206007,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a51ead4bb744ca54bb96a4c455206007, type: 3}
@@ -3531,6 +3544,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Charges :
+
+        Poids :'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19215688
+      objectReference: {fileID: 0}
     - target: {fileID: 2116326729156002111, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3650,33 +3690,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.0068979664
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Charges :
-
-        Poids :'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.76470596
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.19215688
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141bb5824ae3a4f4a86ada3ef45e6765, type: 3}
@@ -8426,6 +8439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 2063265111}
+  disableTextWhenActiveTarget: {fileID: 935381471}
+  disableTextWhenActiveInterrupt1: {fileID: 1369911916}
+  disableTextWhenActiveInterrupt2: {fileID: 233410468}
 --- !u!4 &1272578705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 212034515752125785, guid: e03433ff5cfcea045854217eafdcf1c4,
@@ -8473,6 +8489,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TextPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Charges :
+
+        Poids :'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19215688
       objectReference: {fileID: 0}
     - target: {fileID: 2116326729156002111, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
         type: 3}
@@ -8593,33 +8636,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.0068979664
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Charges :
-
-        Poids :'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.76470596
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.19215688
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141bb5824ae3a4f4a86ada3ef45e6765, type: 3}
@@ -9212,7 +9228,7 @@ PrefabInstance:
     - target: {fileID: 5475990337001742932, guid: 33825ea78d540d3488e898dbc341696d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.67
+      value: 11.55
       objectReference: {fileID: 0}
     - target: {fileID: 5475990337001742932, guid: 33825ea78d540d3488e898dbc341696d,
         type: 3}
@@ -9268,6 +9284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475990337001742932, guid: 33825ea78d540d3488e898dbc341696d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4608
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33825ea78d540d3488e898dbc341696d, type: 3}
@@ -10747,6 +10768,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Charges :
+
+        Poids :'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19215688
+      objectReference: {fileID: 0}
     - target: {fileID: 2116326729156002111, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10866,33 +10914,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.0068979664
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Charges :
-
-        Poids :'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.76470596
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.19215688
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141bb5824ae3a4f4a86ada3ef45e6765, type: 3}
@@ -11223,6 +11244,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 225271488}
+  disableTextWhenActiveTarget: {fileID: 935381471}
+  disableTextWhenActiveInterrupt1: {fileID: 1369911916}
+  disableTextWhenActiveInterrupt2: {fileID: 233410468}
 --- !u!43 &1703299558
 Mesh:
   m_ObjectHideFlags: 0
@@ -11767,6 +11791,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1079640722}
+  disableTextWhenActiveTarget: {fileID: 935381471}
+  disableTextWhenActiveInterrupt1: {fileID: 1369911916}
+  disableTextWhenActiveInterrupt2: {fileID: 233410468}
 --- !u!114 &1774360810 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
@@ -12439,7 +12466,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh218424
+  m_Name: pb_Mesh234364
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13575,6 +13602,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: TextPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Charges :
+
+        Poids :'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.76470596
+      objectReference: {fileID: 0}
+    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.19215688
+      objectReference: {fileID: 0}
     - target: {fileID: 2116326729156002111, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13694,33 +13748,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.0068979664
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Charges :
-
-        Poids :'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.76470596
-      objectReference: {fileID: 0}
-    - target: {fileID: 2116326730862652270, guid: 141bb5824ae3a4f4a86ada3ef45e6765,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.19215688
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141bb5824ae3a4f4a86ada3ef45e6765, type: 3}
@@ -14630,25 +14657,7 @@ PrefabInstance:
     - target: {fileID: 3445724844999396423, guid: b3699fa2e75a5a54e9281d4be852924f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 15.749999
+      value: 16.913923
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3699fa2e75a5a54e9281d4be852924f, type: 3}
---- !u!1 &4996026482226825134 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4996026482226825134, guid: b3699fa2e75a5a54e9281d4be852924f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2529608394284541392}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4996026482226825135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4996026482226825134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad7b5abd184c81498638701a1e1ddd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

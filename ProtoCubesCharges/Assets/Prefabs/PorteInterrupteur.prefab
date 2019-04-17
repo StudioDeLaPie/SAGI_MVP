@@ -49,8 +49,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   goPorte: {fileID: 6858949938532430630}
-  tailleMinimum: 0
-  vitesse: 0.1
+  tailleMinimum: 0.2
+  vitesse: 0.95
   soundActive: {fileID: 8300000, guid: 3311213769363904f9449bd578bfa4ef, type: 3}
   soundDesactive: {fileID: 8300000, guid: 3311213769363904f9449bd578bfa4ef, type: 3}
 --- !u!82 &1545641653
