@@ -10,7 +10,6 @@ namespace UnityStandardAssets.Utility
         public bool ignoreTimescale;
         private float m_LastRealTime;
 
-
         private void Start()
         {
             m_LastRealTime = Time.realtimeSinceStartup;

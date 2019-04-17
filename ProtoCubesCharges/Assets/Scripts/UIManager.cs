@@ -28,4 +28,14 @@ public class UIManager : MonoBehaviour
         Debug.Log("go back menu");
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+    public void OpenFacebook()
+    {
+        Application.OpenURL("https://www.facebook.com/StudioDeLaPie");
+    }
 }
