@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -14,9 +15,16 @@ public class GizmoPlaqueAPulte : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if (UNITY_EDITOR)
         plaque = GetComponent<PlaqueAPulte>();
+        return;
+#else
+        Destroy(gizmo);
+        Destroy(this);
+#endif
     }
 
+#if (UNITY_EDITOR)
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +33,7 @@ public class GizmoPlaqueAPulte : MonoBehaviour
             gizmo.SetActive(false);
             return;
         }
-        else 
+        else
         {
             gizmo.SetActive(true);
             Vector3 gizmoScale = gizmo.transform.localScale;
@@ -41,7 +49,7 @@ public class GizmoPlaqueAPulte : MonoBehaviour
 
         }
 
-
     }
+#endif
 
 }
