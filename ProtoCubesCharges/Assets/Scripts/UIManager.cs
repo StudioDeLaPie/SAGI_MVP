@@ -38,4 +38,9 @@ public class UIManager : MonoBehaviour
     {
         Application.OpenURL("https://www.facebook.com/StudioDeLaPie");
     }
+
+    public void LevelSelector()
+    {
+        SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings-1, LoadSceneMode.Single);
+    }
 }
