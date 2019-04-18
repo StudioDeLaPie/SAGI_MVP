@@ -155,6 +155,7 @@ public class Outline : MonoBehaviour
 
     void Update()
     {
+        //Rajouté pour que l'épaisseur décroisse avec la distance
         float dist = Vector3.Distance(player.transform.position, gameObject.transform.position);
         outlineWidth = Mathf.Clamp(Mathematiques.Map(dist, minDistance, maxDistance, maxWidth, minWidth), minWidth, maxWidth);
         

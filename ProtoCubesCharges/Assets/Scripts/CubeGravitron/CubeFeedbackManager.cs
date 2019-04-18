@@ -11,7 +11,12 @@ public class CubeFeedbackManager : MonoBehaviour
     public GameObject go_parentFleches;
     public GameObject go_parentCharges;
 
+    public Material defaultFlecheMaterial;
+    public Material transparentFlecheMaterial;
     public List<GameObject> go_list_fleches;
+
+    public Material defaultChargeMaterial;
+    public Material transparentChargeMaterial;
     public List<GameObject> go_list_charges;
 
     public List<Material> materials;
@@ -21,6 +26,10 @@ public class CubeFeedbackManager : MonoBehaviour
     private int _poids;
     private MeshRenderer _hologrammeMesh;
     private Light _light;
+
+    private float _transparencyPercentage;
+    private bool _isTransparent = false;
+    private float lastTransparencyUpdate;
 
     public bool Materialise
     {
@@ -59,6 +68,20 @@ public class CubeFeedbackManager : MonoBehaviour
         }
     }
 
+    public float TransparencyPercentage
+    {
+        set
+        {
+            _transparencyPercentage = value;
+            lastTransparencyUpdate = Time.time;
+            if (!_isTransparent)
+            {
+                _isTransparent = true;
+                StartCoroutine(TransparencyCoroutine());
+            }
+        }
+    }
+
     public void Init(int nbCharges, int poids, bool materialised)
     {
         _hologrammeMesh = go_hologramme.GetComponentInChildren<MeshRenderer>();
@@ -68,6 +91,9 @@ public class CubeFeedbackManager : MonoBehaviour
         _nbCharges = nbCharges;
         _poids = poids;
         UpdateCubeFeedback();
+
+        transparentFlecheMaterial = new Material(transparentFlecheMaterial);
+        transparentChargeMaterial = new Material(transparentChargeMaterial);
     }
 
     private void UpdateCubeFeedback()
@@ -76,6 +102,45 @@ public class CubeFeedbackManager : MonoBehaviour
         UpdateCharges();
         UpdateMaterial();
         UpdateLight();
+    }
+
+    private IEnumerator TransparencyCoroutine()
+    {
+        //Initialisation
+        List<Outline> outlines = new List<Outline>();
+        foreach (GameObject go in go_list_fleches) //MAJ matériau flèches + récupération des outlines
+            foreach (MeshRenderer mesh in go.GetComponentsInChildren<MeshRenderer>())
+            {
+                mesh.material = transparentFlecheMaterial;
+                outlines.Add(mesh.GetComponent<Outline>());
+            }
+
+        foreach (GameObject charge in go_list_charges) //MAJ matériau charges
+            charge.GetComponent<MeshRenderer>().material = transparentChargeMaterial;
+        Color outlineColor = outlines[0].OutlineColor;
+
+        //MAJ transparence
+        while (_isTransparent && Time.time < lastTransparencyUpdate + 0.5)
+        {
+            Debug.Log("transparent");
+            transparentFlecheMaterial.color = new Color(transparentFlecheMaterial.color.r, transparentFlecheMaterial.color.g, transparentFlecheMaterial.color.b, _transparencyPercentage);
+            transparentChargeMaterial.color = new Color(transparentChargeMaterial.color.r, transparentChargeMaterial.color.g, transparentChargeMaterial.color.b, _transparencyPercentage);
+            foreach (Outline outline in outlines)
+                outline.OutlineColor = new Color(outlineColor.r, outlineColor.g, outlineColor.b, _transparencyPercentage);
+            yield return null;
+        }
+
+        Debug.Log("plus");
+        //Fin
+        foreach (GameObject go in go_list_fleches) //Reset matériaux fleches
+            foreach (MeshRenderer mesh in go.GetComponentsInChildren<MeshRenderer>())
+                mesh.material = defaultFlecheMaterial;
+        foreach (Outline outline in outlines) //Reset outlines fleches
+            outline.OutlineColor = new Color(outlineColor.r, outlineColor.g, outlineColor.b, 100);
+        foreach (GameObject charge in go_list_charges) //Reset matériaux charges
+            charge.GetComponent<MeshRenderer>().material = defaultChargeMaterial;
+
+        _isTransparent = false;
     }
 
     private void Materialisation()
@@ -106,7 +171,7 @@ public class CubeFeedbackManager : MonoBehaviour
         {
             go.SetActive(false);
         }
-        
+
         for (int i = 0; i < _nbCharges; i++)
         {
             go_list_charges[i].SetActive(true);

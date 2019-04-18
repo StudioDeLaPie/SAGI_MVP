@@ -221,10 +221,18 @@ MonoBehaviour:
   go_materialise: {fileID: 2397623605256718527}
   go_parentFleches: {fileID: 4505739047932902170}
   go_parentCharges: {fileID: 1378365816835014943}
+  defaultFlecheMaterial: {fileID: 2100000, guid: bbb4250c2479a7d4e9f5a82744875253,
+    type: 2}
+  transparentFlecheMaterial: {fileID: 2100000, guid: 670dc76024fb9604b85294d7c231df77,
+    type: 2}
   go_list_fleches:
   - {fileID: 891445608871842904}
   - {fileID: 1546168848543497745}
   - {fileID: 3267427818644115636}
+  defaultChargeMaterial: {fileID: 2100000, guid: f88dcf03d18dd744daf526817931b80f,
+    type: 2}
+  transparentChargeMaterial: {fileID: 2100000, guid: 970e12f0c6cb5ca498c9b0e222d89bd2,
+    type: 2}
   go_list_charges:
   - {fileID: 1278587814470306086}
   - {fileID: 507239221277251523}
