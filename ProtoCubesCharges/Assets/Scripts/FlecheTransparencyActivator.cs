@@ -19,7 +19,7 @@ public class FlecheTransparencyActivator : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Fige"))
         {
             float percentage = (Vector3.Distance(transform.position, other.ClosestPoint(transform.position)) - minDistance) / _collider.radius;
-            Debug.Log(percentage);
+            //Debug.Log(percentage);
             other.GetComponentInParent<CubeFeedbackManager>().TransparencyPercentage = percentage;
         }
     }

@@ -7,25 +7,25 @@ public class UIManager : MonoBehaviour
 {
     public void ResetLevel()
     {
-        Debug.Log("Reset");
+        //Debug.Log("Reset");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     public void PreviousLevel()
     {
-        Debug.Log("Previous level");
+        //Debug.Log("Previous level");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1, LoadSceneMode.Single);
     }
 
     public void NextLevel()
     {
-        Debug.Log("Next level");
+        //Debug.Log("Next level");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 
     public void GoBackToMenu()
     {
-        Debug.Log("go back menu");
+        //Debug.Log("go back menu");
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 

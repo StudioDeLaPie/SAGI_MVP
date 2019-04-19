@@ -80,7 +80,7 @@ public class Teleporter : MonoBehaviour
 
     public void Teleport()
     {
-        Debug.Log("Niveau Terminé");
+        //Debug.Log("Niveau Terminé");
         int index = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(index + 1, LoadSceneMode.Single);
     }

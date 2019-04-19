@@ -27,7 +27,7 @@ public class AmbiantSoundManager : MonoBehaviour
 
     IEnumerator WaitEndClip(AudioClip sound)
     {
-        Debug.Log("On attend : " + sound.length + " Secondes avant le lancement de la prochaine musique");
+        //Debug.Log("On attend : " + sound.length + " Secondes avant le lancement de la prochaine musique");
         yield return new WaitForSeconds(sound.length);
 
         //La musique est terminé
@@ -36,7 +36,7 @@ public class AmbiantSoundManager : MonoBehaviour
 
     IEnumerator Wait(int seconds)
     {
-        Debug.Log("On attend un blanc de : " + seconds + " Secondes avant le lancement de la prochaine musique");
+        //Debug.Log("On attend un blanc de : " + seconds + " Secondes avant le lancement de la prochaine musique");
         yield return new WaitForSeconds(seconds);
 
         //On a finit d'attendre

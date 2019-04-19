@@ -152,7 +152,9 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 0780f930e4e993d4a9ba204d2cda9648
+    name: AmbiantVolume
   m_AudioMixerGroupViews:
   - guids:
     - 223c16c32274403458a8b9c8fd575506
@@ -222,7 +224,7 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: a76f9e13fe156fb4891f82353099f80c
   m_FloatValues:
-    0780f930e4e993d4a9ba204d2cda9648: -10.867776
+    0780f930e4e993d4a9ba204d2cda9648: 0.10800299
     c4871a01664fcfc4d82e014e506066b4: 7.34
     9baa5e1361e385a47baa2653393e4c06: -10.867776
     3d6d9534eedd80b438cf1cbe09172c55: -0.16685188
