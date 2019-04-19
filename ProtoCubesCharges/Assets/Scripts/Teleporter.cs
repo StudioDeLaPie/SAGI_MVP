@@ -19,7 +19,7 @@ public class Teleporter : MonoBehaviour
 
     void Start()
     {
-        foreach ( Target target in targets)
+        foreach (Target target in targets)
         {
             target.SetTeleporter(this);
         }
@@ -69,19 +69,24 @@ public class Teleporter : MonoBehaviour
             teleporterZone.enabled = false;
         }
     }
-    
+
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
+            // Si la dernière scène avant l'écran de fin
+            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 3) // - 3 = endScreen, selectorLevel, count
+            {
+                other.GetComponent<PlayerMovementController>().enabled = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
             Teleport();
         }
     }
 
     public void Teleport()
     {
-        //Debug.Log("Niveau Terminé");
-        int index = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(index + 1, LoadSceneMode.Single);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 }
