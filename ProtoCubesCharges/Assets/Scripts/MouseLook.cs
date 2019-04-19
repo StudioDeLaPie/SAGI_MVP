@@ -65,11 +65,11 @@ public class MouseLook
 
     private void InternalLockUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetButtonUp("Escape"))
         {
             m_cursorIsLocked = false;
         }
-        else if (Input.GetMouseButtonUp(0) && !IsPointerOverUIObject())
+        else if ((Input.GetButtonUp("OMGAjout") && !IsPointerOverUIObject()) || Input.GetButtonUp("Cancel"))
         {
             m_cursorIsLocked = true;
         }

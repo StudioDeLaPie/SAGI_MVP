@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OMG : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float cooldown = 0.5f;
+    [SerializeField] private float cooldownTriggers = 0.5f;
     [SerializeField] private Transform firePoint;
     [SerializeField] private int currentCharges;
     [SerializeField] private int maxCharges;
@@ -30,17 +30,14 @@ public class OMG : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time > lastShot + cooldown)
+        if (Input.GetButtonDown("OMGAjout") || (Input.GetAxis("OMGAjout") != 0 && Time.time > lastShot + cooldownTriggers))
         {
-            if (Input.GetButtonDown("OMGAjout"))
-            {
-                Shot(true);
-            }
+            Shot(true);
+        }
 
-            if (Input.GetButtonDown("OMGRetrait"))
-            {
-                Shot(false);
-            }
+        if (Input.GetButtonDown("OMGRetrait") || (Input.GetAxis("OMGRetrait") != 0 && Time.time > lastShot + cooldownTriggers))
+        {
+            Shot(false);
         }
     }
 
@@ -71,7 +68,7 @@ public class OMG : MonoBehaviour
             }
             else
                 soundManagerPlayer.PlayOneShotOMG_Fail();
-            
+
         }
         else
             soundManagerPlayer.PlayOneShotOMG_Fail();
