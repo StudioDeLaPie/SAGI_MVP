@@ -92,6 +92,8 @@ public class CubeFeedbackManager : MonoBehaviour
         _poids = poids;
         UpdateCubeFeedback();
 
+        go_parentCharges.transform.Rotate(new Vector3(0, 0, Random.Range(0, 360)), Space.Self);
+
         transparentFlecheMaterial = new Material(transparentFlecheMaterial);
         transparentChargeMaterial = new Material(transparentChargeMaterial);
     }
@@ -159,8 +161,8 @@ public class CubeFeedbackManager : MonoBehaviour
         go_materialise.SetActive(false);
 
         //Remet les fleches et charges au centre du cube
-        go_parentFleches.transform.position = transform.position;
-        go_parentCharges.transform.position = transform.position;
+        go_parentFleches.transform.Translate(0, 0, -(transform.root.localScale.x * CONST.ROOT3) / 2f, Space.Self);
+        go_parentCharges.transform.Translate(0, 0, -(transform.root.localScale.x * CONST.ROOT3) / 2f, Space.Self);
 
         //Désactive la transparence des flèches et charges
         _isTransparent = false;
@@ -168,6 +170,8 @@ public class CubeFeedbackManager : MonoBehaviour
 
     private void UpdateCharges()
     {
+        go_parentCharges.SetActive(_nbCharges != 0);
+
         foreach (GameObject go in go_list_charges)
         {
             go.SetActive(false);
