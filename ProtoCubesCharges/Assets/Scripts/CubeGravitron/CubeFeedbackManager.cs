@@ -122,7 +122,6 @@ public class CubeFeedbackManager : MonoBehaviour
         //MAJ transparence
         while (_isTransparent && Time.time < lastTransparencyUpdate + 0.5)
         {
-            Debug.Log("transparent");
             transparentFlecheMaterial.color = new Color(transparentFlecheMaterial.color.r, transparentFlecheMaterial.color.g, transparentFlecheMaterial.color.b, _transparencyPercentage);
             transparentChargeMaterial.color = new Color(transparentChargeMaterial.color.r, transparentChargeMaterial.color.g, transparentChargeMaterial.color.b, _transparencyPercentage);
             foreach (Outline outline in outlines)
@@ -130,7 +129,6 @@ public class CubeFeedbackManager : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("plus");
         //Fin
         foreach (GameObject go in go_list_fleches) //Reset matériaux fleches
             foreach (MeshRenderer mesh in go.GetComponentsInChildren<MeshRenderer>())
@@ -163,6 +161,9 @@ public class CubeFeedbackManager : MonoBehaviour
         //Remet les fleches et charges au centre du cube
         go_parentFleches.transform.position = transform.position;
         go_parentCharges.transform.position = transform.position;
+
+        //Désactive la transparence des flèches et charges
+        _isTransparent = false;
     }
 
     private void UpdateCharges()
