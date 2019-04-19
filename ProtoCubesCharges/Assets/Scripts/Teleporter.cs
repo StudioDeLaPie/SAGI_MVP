@@ -81,12 +81,16 @@ public class Teleporter : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-            Teleport();
+            other.GetComponentInChildren<LoadingScreen>().FadeIn();
+            StartCoroutine(Teleport(other.GetComponentInChildren<LoadingScreen>()));
         }
     }
 
-    public void Teleport()
+    public IEnumerator Teleport(LoadingScreen loadingScreen)
     {
+        while (loadingScreen.isOnTransition)
+            yield return null;
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
 }
