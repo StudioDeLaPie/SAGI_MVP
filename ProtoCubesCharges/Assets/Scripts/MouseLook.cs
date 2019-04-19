@@ -13,6 +13,8 @@ public class MouseLook
     public float MaximumX = 90F;
     public bool lockCursor = true;
 
+    public GameObject escapeMenu;
+    public GameObject reticule;
 
     private Quaternion m_CharacterTargetRot;
     private Quaternion m_CameraTargetRot;
@@ -78,11 +80,15 @@ public class MouseLook
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            escapeMenu.SetActive(false);
+            reticule.SetActive(true);
         }
         else if (!m_cursorIsLocked)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            escapeMenu.SetActive(true);
+            reticule.SetActive(false);
         }
     }
 
