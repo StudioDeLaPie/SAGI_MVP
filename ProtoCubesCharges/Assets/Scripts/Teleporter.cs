@@ -81,8 +81,8 @@ public class Teleporter : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
-            other.GetComponentInChildren<LoadingScreen>().FadeIn();
-            StartCoroutine(Teleport(other.GetComponentInChildren<LoadingScreen>()));
+            other.transform.root.GetComponentInChildren<LoadingScreen>().FadeIn();
+            StartCoroutine(Teleport(other.transform.root.GetComponentInChildren<LoadingScreen>()));
         }
     }
 
