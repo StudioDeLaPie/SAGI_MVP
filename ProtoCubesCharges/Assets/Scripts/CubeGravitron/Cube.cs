@@ -8,6 +8,7 @@ public class Cube : MonoBehaviour
     private Charges charges;
     private Rigidbody rb;
     private CubeFeedbackManager feedbackManager;
+    private Gravity gravity;
 
     public int NbCharges
     {
@@ -43,6 +44,7 @@ public class Cube : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = materialised;
         charges = GetComponent<Charges>();
+        gravity = GetComponent<Gravity>();
         feedbackManager = GetComponent<CubeFeedbackManager>();
         feedbackManager.Init(charges.CurrentCharge, charges.CurrentPoids, materialised);
     }
@@ -65,6 +67,7 @@ public class Cube : MonoBehaviour
     {
         materialised = !materialised;
         rb.isKinematic = materialised;
+        gravity.enabled = !materialised;
         feedbackManager.Materialise = materialised;
     }
 
