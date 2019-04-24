@@ -77,10 +77,11 @@ public class Teleporter : MonoBehaviour
             // Si la dernière scène avant l'écran de fin
             if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 3) // - 3 = endScreen, selectorLevel, count
             {
-                other.GetComponent<PlayerMovementController>().enabled = false;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
+            other.transform.root.GetComponent<PlayerMovementController>().enabled = false;
+            other.transform.root.GetComponent<Rigidbody>().isKinematic = true;
             other.transform.root.GetComponentInChildren<LoadingScreen>().FadeIn();
             StartCoroutine(Teleport(other.transform.root.GetComponentInChildren<LoadingScreen>()));
         }
