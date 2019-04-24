@@ -13807,8 +13807,7 @@ MonoBehaviour:
   soundCAP_Dematerialise: {fileID: 8300000, guid: 387f12905f281f747a8b1ff0d723e420,
     type: 3}
   soundCAP_Fail: {fileID: 8300000, guid: 7b8c33d8c456c9a48aff54654c2bc6b4, type: 3}
-  soundORA_Charge: {fileID: 0}
-  soundORA_Shot: {fileID: 0}
+  soundMort: {fileID: 8300000, guid: efe19be82ce6ce145b35ec7db8fefef4, type: 3}
 --- !u!82 &7237380139682644402
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13818,7 +13817,7 @@ AudioSource:
   m_GameObject: {fileID: 7237380139682644401}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -104199834686295193, guid: 380b19773fa14514faa784ade6a50f46,
+  OutputAudioMixerGroup: {fileID: -3009039089339154669, guid: 380b19773fa14514faa784ade6a50f46,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -14109,7 +14108,7 @@ AudioSource:
   m_GameObject: {fileID: 7237380139682644401}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -3009039089339154669, guid: 380b19773fa14514faa784ade6a50f46,
+  OutputAudioMixerGroup: {fileID: 8029153306056243855, guid: 380b19773fa14514faa784ade6a50f46,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -15441,31 +15440,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3361283255262503614, guid: 963531cecca73634eaddde3c0c7fd4f8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3361283255262503614, guid: 963531cecca73634eaddde3c0c7fd4f8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3361283255462067077, guid: 963531cecca73634eaddde3c0c7fd4f8,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3361283255462067077, guid: 963531cecca73634eaddde3c0c7fd4f8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3361283255462067077, guid: 963531cecca73634eaddde3c0c7fd4f8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3361283255694169037, guid: 963531cecca73634eaddde3c0c7fd4f8,
         type: 3}

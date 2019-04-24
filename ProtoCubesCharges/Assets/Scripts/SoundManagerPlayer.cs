@@ -17,14 +17,13 @@ public class SoundManagerPlayer : MonoBehaviour
     public AudioClip soundCAP_Dematerialise;
     public AudioClip soundCAP_Fail;
 
-    public AudioClip soundORA_Charge;
-    public AudioClip soundORA_Shot;
-   
+    public AudioClip soundMort;
 
     private AudioSource audioSourceRAP;
     private AudioSource audioSourceCAP;
     private AudioSource audioSourceOMG;
-    private AudioSource audioSourceORA;
+    private AudioSource audioSourceMort;
+
 
     private void Start()
     {
@@ -36,9 +35,8 @@ public class SoundManagerPlayer : MonoBehaviour
         audioSourceRAP = GetComponents<AudioSource>()[0];
         audioSourceCAP = GetComponents<AudioSource>()[1];
         audioSourceOMG = GetComponents<AudioSource>()[2];
-        audioSourceORA = GetComponents<AudioSource>()[3];
+        audioSourceMort = GetComponents<AudioSource>()[3];
     }
-
 
     public void PlayOneShotOMGPositif()
     {
@@ -85,13 +83,10 @@ public class SoundManagerPlayer : MonoBehaviour
         audioSourceCAP.PlayOneShot(soundCAP_Fail);
     }
 
-    public void PlayOneShotORA_Charge()
+    public void PlayOneShotMort()
     {
-        audioSourceORA.PlayOneShot(soundORA_Charge);
+        audioSourceMort.PlayOneShot(soundMort);
     }
 
-    public void PlayOneShotORA_Shot()
-    {
-        audioSourceORA.PlayOneShot(soundORA_Shot);
-    }
+    public AudioSource AudioSourceMort { get => audioSourceMort; set => audioSourceMort = value; }
 }
