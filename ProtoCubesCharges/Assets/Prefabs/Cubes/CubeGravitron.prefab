@@ -651,12 +651,12 @@ GameObject:
   - component: {fileID: 6642469112230286733}
   - component: {fileID: 1185146897691054794}
   m_Layer: 14
-  m_Name: ColliderTerrain
+  m_Name: ColliderTerrainMarchePasBien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3740817337967486836
 Transform:
   m_ObjectHideFlags: 0
@@ -1510,7 +1510,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5735883239516879475}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bd5abc591197de34a81a0754228d8190, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
