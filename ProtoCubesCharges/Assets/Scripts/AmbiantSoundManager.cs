@@ -81,7 +81,7 @@ public class AmbiantSoundManager : MonoBehaviour
 
     private AudioClip FirstSound()
     {
-        int numSound = Aleatoire.AleatoireBetween(0, soundsMenu.Count); //On selectionne un index aleatoire (sauf le premier élèment)
+        int numSound = Aleatoire.AleatoireBetween(0, soundsMenu.Count - 1); //On selectionne un index aleatoire (sauf le premier élèment)
         AudioClip tempSound = soundsMenu[numSound]; //On stock le clip audio
         soundsMenu.RemoveAt(numSound); //On l'efface de la list
         soundsMenu.Insert(0, tempSound); //on l'insert au debut pour ne pas le réutiliser la prochaine fois
