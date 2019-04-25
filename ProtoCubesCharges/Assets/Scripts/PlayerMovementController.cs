@@ -212,7 +212,7 @@ public class PlayerMovementController : MonoBehaviour
         if (Physics.SphereCast(transform.position, m_Capsule.radius * (1.0f - movementSettings.shellOffset), Vector3.down, out hitInfo,
                                ((m_Capsule.height / 2f) - m_Capsule.radius) + movementSettings.groundCheckDistance, walkableLayers, QueryTriggerInteraction.Ignore))
         {
-            m_IsGrounded = true;
+            m_IsGrounded = LayerMask.LayerToName(hitInfo.collider.gameObject.layer) != "PlaqueAPulte";
         }
         else
         {

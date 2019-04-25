@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3278750584075570911}
   - component: {fileID: 1490031500880775832}
   - component: {fileID: 4951711786569283292}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GizmoPoids1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3887116087917521855}
   - component: {fileID: 3515855141671220853}
   - component: {fileID: 4689134173318236759}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: PlaqueAPulte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleAnimate: {fileID: 7508260432913685233}
-  force: 22.56
+  hauteurCube2: 10
   durationApparition: 0.2
   soundBounce: {fileID: 8300000, guid: 7eeb2426dfaa9404c8084d3c9a013f24, type: 3}
 --- !u!65 &3887116087917521855
@@ -166,7 +166,8 @@ AudioSource:
   m_GameObject: {fileID: 2109733844370677863}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4110392471428065066, guid: 380b19773fa14514faa784ade6a50f46,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -264,7 +265,7 @@ GameObject:
   - component: {fileID: 4801630349674582916}
   - component: {fileID: 8800584023756171891}
   - component: {fileID: 1408197184038617254}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GizmoPoids2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5575057161790567292}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,8 +355,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3284631503242223631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.986817, z: 0}
-  m_LocalScale: {x: 0.2, y: 5.973634, z: 0.2}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 0.2, y: 20, z: 0.2}
   m_Children:
   - {fileID: 3278750584075570911}
   - {fileID: 4801630349674582916}
@@ -374,7 +375,7 @@ GameObject:
   - component: {fileID: 7074529398886050789}
   - component: {fileID: 738675859991447768}
   - component: {fileID: 7091920128835155555}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Socle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +465,7 @@ GameObject:
   - component: {fileID: 7728587889676874040}
   - component: {fileID: 2217139104547973695}
   - component: {fileID: 2934598805780919438}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SimpleAnimate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

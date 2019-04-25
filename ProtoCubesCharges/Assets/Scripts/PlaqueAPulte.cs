@@ -12,11 +12,13 @@ public class PlaqueAPulte : MonoBehaviour
 
     private float gravity = 42.6f;
     private AudioSource audioSource;
+    private float lastSound;
 
     void Start()
     {
         simpleAnimate.SetActive(false);
         audioSource = GetComponent<AudioSource>();
+        lastSound = Time.time;
     }
 
     private IEnumerator AnimationActivation()
@@ -58,7 +60,12 @@ public class PlaqueAPulte : MonoBehaviour
             }
 
             rg.velocity = transform.TransformVector(newVelocity);
-            audioSource.PlayOneShot(soundBounce);
+
+            if (Time.time > lastSound + durationApparition)
+            {
+                audioSource.PlayOneShot(soundBounce);
+                lastSound = Time.time;
+            }
             StartCoroutine(AnimationActivation());
         }
     }
@@ -72,4 +79,5 @@ public class PlaqueAPulte : MonoBehaviour
     {
         Projection(other);
     }
+
 }
