@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Jumpable
   - Ground
+  - AmbiantSoundManager
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Fige
   - Player
   - FlecheTransparencyActivator
-  - 
-  - 
+  - Terrain
+  - CubeBevel
   - 
   - 
   - 
