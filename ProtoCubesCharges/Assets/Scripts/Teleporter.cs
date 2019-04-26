@@ -82,14 +82,14 @@ public class Teleporter : MonoBehaviour
             }
             other.transform.root.GetComponent<PlayerMovementController>().enabled = false;
             other.transform.root.GetComponent<Rigidbody>().isKinematic = true;
-            other.transform.root.GetComponentInChildren<LoadingScreen>().FadeIn();
-            StartCoroutine(Teleport(other.transform.root.GetComponentInChildren<LoadingScreen>()));
+            other.transform.root.GetComponentInChildren<BlackScreenTransition>().FadeIn();
+            StartCoroutine(Teleport(other.transform.root.GetComponentInChildren<BlackScreenTransition>()));
         }
     }
 
-    public IEnumerator Teleport(LoadingScreen loadingScreen)
+    public IEnumerator Teleport(BlackScreenTransition blackScreen)
     {
-        while (loadingScreen.isOnTransition)
+        while (blackScreen.isOnTransition)
             yield return null;
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
