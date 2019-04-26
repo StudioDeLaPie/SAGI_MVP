@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GlitchOutDetector : MonoBehaviour
@@ -11,12 +12,13 @@ public class GlitchOutDetector : MonoBehaviour
     void Start()
     {
         errorMessage = GameObject.FindGameObjectWithTag("ErrorMessage");
-        errorMessage.SetActive(false);
+
+        errorMessage.GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
     private void AfficheMessage()
     {
-        errorMessage.SetActive(true);
+        errorMessage.GetComponent<TextMeshProUGUI>().enabled = true;
         messageAffiche = true;
     }
 
