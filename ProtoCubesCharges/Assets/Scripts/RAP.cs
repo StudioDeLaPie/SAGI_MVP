@@ -21,7 +21,13 @@ public class RAP : MonoBehaviour
     private Rigidbody touchedObject;
     private float minRangeFromTouchedObject;
 
-    
+    public GameObject GetConnectedObject()
+    {
+        if (active)
+            return touchedObject.gameObject;
+        else
+            return null;
+    }
 
     // Start is called before the first frame update
     void Start()

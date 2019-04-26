@@ -22,32 +22,48 @@ public class CAP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("CAP"))
+        if (Input.GetButtonDown("CAP")) // appuie bouton CAP
         {
-            if (CalculateRayCast() && touchedObject != null)
+            RAP rap = GetComponent<RAP>();
+            if (rap.GetConnectedObject() != null) // si RAP activé, on fige le cube attaché
             {
-                if (GetComponent<RAP>() != null)
-                    GetComponent<RAP>().Detache();
-
-                if (feedbackCoroutine != null) StopCoroutine(feedbackCoroutine);
-                feedbackCoroutine = StartCoroutine(DisplayFeedback());
-
-                if (touchedObject.Materialised) soundManagerPlayer.PlayOneShotCAP_Dematerialise();
-                else soundManagerPlayer.PlayOneShotCAP_Materialise();
-
+                touchedObject = rap.GetConnectedObject().GetComponent<Cube>();
+                rap.Detache();
+                //On joue pas le feedback parce qu'on est pas forcément en face
+                soundManagerPlayer.PlayOneShotCAP_Materialise();
                 touchedObject.SwitchMaterialisation();
             }
             else
-                soundManagerPlayer.PLayOneShotCAP_Fail();
+            { // RAP désactivé donc comportement normal
+
+                if (CalculateRayCast() && touchedObject != null)
+                {
+                    if (GetComponent<RAP>() != null)
+                        GetComponent<RAP>().Detache();
+
+                    if (feedbackCoroutine != null) StopCoroutine(feedbackCoroutine);
+                    feedbackCoroutine = StartCoroutine(DisplayFeedback());
+
+                    if (touchedObject.Materialised) soundManagerPlayer.PlayOneShotCAP_Dematerialise();
+                    else soundManagerPlayer.PlayOneShotCAP_Materialise();
+
+                    touchedObject.SwitchMaterialisation();
+                }
+                else
+                    soundManagerPlayer.PLayOneShotCAP_Fail();
+            }
+
         }
     }
 
     private bool CalculateRayCast()
     {
+
         bool result = Physics.Raycast(firePoint.position, firePoint.forward, out var hit, 500f, layerMask.value);
         if (result)
             touchedObject = hit.transform.GetComponent<Cube>();
         return result;
+
     }
 
     private IEnumerator DisplayFeedback()
