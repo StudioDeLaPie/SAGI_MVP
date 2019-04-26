@@ -26,7 +26,7 @@ public class PlaqueMort : MonoBehaviour
 
         soundManagerPlayer.PlayOneShotMort();//On joue le son de mort
 
-        player.GetComponentInChildren<LoadingScreen>().FadeIn(); //On effectue un fondu
+        player.GetComponentInChildren<BlackScreenTransition>().FadeIn(); //On effectue un fondu
 
         while (soundManagerPlayer.AudioSourceMort.isPlaying) //tant que le son n'est pas finit
         {
