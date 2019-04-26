@@ -205,7 +205,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 30.5
+  m_fontSize: 34.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -554,7 +554,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 204.5
+  m_fontSize: 209.4
   m_fontSizeBase: 190
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.4
+  m_fontSize: 27.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5101,7 +5101,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25.15
+  m_fontSize: 25.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5605,6 +5605,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundControl
       objectReference: {fileID: 0}
+    - target: {fileID: 3361283254635113989, guid: 963531cecca73634eaddde3c0c7fd4f8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3361283254635113988, guid: 963531cecca73634eaddde3c0c7fd4f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5713,7 +5718,7 @@ PrefabInstance:
     - target: {fileID: 3361283255439829133, guid: 963531cecca73634eaddde3c0c7fd4f8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.9999466
+      value: -4.999939
       objectReference: {fileID: 0}
     - target: {fileID: 3361283255694169036, guid: 963531cecca73634eaddde3c0c7fd4f8,
         type: 3}
@@ -5723,12 +5728,12 @@ PrefabInstance:
     - target: {fileID: 3361283255694169036, guid: 963531cecca73634eaddde3c0c7fd4f8,
         type: 3}
       propertyPath: m_MaxValue
-      value: 0.09
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3361283255694169036, guid: 963531cecca73634eaddde3c0c7fd4f8,
         type: 3}
       propertyPath: m_Value
-      value: 0.02286043
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3361283255262503614, guid: 963531cecca73634eaddde3c0c7fd4f8,
         type: 3}
