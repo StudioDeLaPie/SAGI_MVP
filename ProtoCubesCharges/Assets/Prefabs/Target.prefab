@@ -140,40 +140,22 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0025634766
-      value: 1.0000057
-      inSlope: -0.042019956
-      outSlope: -0.042019956
+      time: 0.05
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.54734504
-    - serializedVersion: 3
-      time: 0.08092719
-      value: 0.9989681
-      inSlope: -0.14882836
-      outSlope: -0.14882836
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 1
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5969595
-      value: 0.31063664
-      inSlope: -1.7768779
-      outSlope: -1.7768779
+      time: 1
+      value: 0.4986725
+      inSlope: -0.034252062
+      outSlope: -0.034252062
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.69445795
-      outWeight: 0.19052528
-    - serializedVersion: 3
-      time: 0.9897442
-      value: 0.03224864
-      inSlope: -0.35462815
-      outSlope: -0.35462815
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.36797008
+      inWeight: 0.22518986
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

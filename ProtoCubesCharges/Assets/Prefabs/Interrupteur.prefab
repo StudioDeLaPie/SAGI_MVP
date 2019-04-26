@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5249102c2452806418a66f472f0c0a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundActivation: {fileID: 8300000, guid: d2b1b6725dcd6b540a361dce71300b18, type: 3}
-  soundDesactivation: {fileID: 8300000, guid: 0757a96f5d547ad42a37a5f370b979f8, type: 3}
+  soundActivation: {fileID: 8300000, guid: 7b86827915a6c184c9184871b9d0eb0b, type: 3}
+  soundDesactivation: {fileID: 8300000, guid: d1877a772550fb54e97ad14a79802c2b, type: 3}
 --- !u!82 &2774903586296025189
 AudioSource:
   m_ObjectHideFlags: 0
@@ -158,23 +158,14 @@ AudioSource:
       inWeight: 1
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5969595
-      value: 0.31063664
-      inSlope: -1.7768779
-      outSlope: -1.7768779
+      time: 1
+      value: 0.49297142
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.69445795
-      outWeight: 0.19052528
-    - serializedVersion: 3
-      time: 0.9897442
-      value: 0.03224864
-      inSlope: -0.35462815
-      outSlope: -0.35462815
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.36797008
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
